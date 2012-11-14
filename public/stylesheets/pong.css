@@ -1,5 +1,5 @@
 body {
-  font-family: "coolvetica-1", "coolvetica-2", Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   background: transparent url('http://www.socialchorus.com/wp-content/themes/socialchorus/img/bgNav.png') repeat top left;
 }
 
@@ -36,6 +36,10 @@ header {
   background: white url(http://www.socialchorus.com/wp-content/themes/socialchorus/img/navStripe.png) repeat-x bottom left;
   padding: 15px 0 20px 0;
   margin-bottom: 40px;
+}
+
+nav {
+  height: 30px;
 }
 
 nav a {
@@ -101,6 +105,7 @@ input[type='text'] {
   font-size: 24px;
   display: block;
   width: 100%;
+  border-radius: 3px;
 }
 
 td.date, th.date {
@@ -148,9 +153,17 @@ td.action, th.action {
 }
 
 .flash .alert {
-  color: red;
+  color: white;
+  border: 1px solid #8b0000;
+  background-color: #db7093;
+  padding: 10px;
+  border-radius: 4px;
 }
 
 .flash .notice {
   color: green;
+  border: 1px solid #2e8b57;
+  background-color: #98fb98;
+  padding: 10px;
+  border-radius: 4px;
 }
