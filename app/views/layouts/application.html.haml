@@ -11,12 +11,14 @@
     = csrf_meta_tag
 
   %body
+    %header
+      .logo-area
+        = image_tag "http://www.socialchorus.com/wp-content/themes/socialchorus/img/logo.png"
+        = image_tag "Panda-Aggressor.jpg"
     #page
-      %header
-        %h1 Social Chorus #{location.downcase}
-        %nav
-          = link_to_with_current "Rankings", root_path
-          = link_to_with_current "Matches", matches_path
+      %nav
+        = link_to_with_current "Rankings", root_path
+        = link_to_with_current "Matches", matches_path
 
       = render 'shared/flash_messages'
       = yield

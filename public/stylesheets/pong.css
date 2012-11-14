@@ -1,5 +1,6 @@
 body {
   font-family: "coolvetica-1", "coolvetica-2", Helvetica, Arial, sans-serif;
+  background: transparent url('http://www.socialchorus.com/wp-content/themes/socialchorus/img/bgNav.png') repeat top left;
 }
 
 body > * {
@@ -16,31 +17,29 @@ h1, h3 {
 
 a {
   text-decoration: none;
-  color: #c50;
+  color: #6e1674;
 }
 
 a.current {
   color: #eee;
-  background-color: #c50;
-  padding-left: 3px;
-  padding-right: 3px;
+  background-color: #6e1674;
+  border-radius: 4px;
+  padding: 5px;
+}
+
+.logo-area {
+  width: 900px;
+  margin: 0 auto;
 }
 
 header {
-  margin-bottom: 20px;
+  background: white url(http://www.socialchorus.com/wp-content/themes/socialchorus/img/navStripe.png) repeat-x bottom left;
+  padding: 15px 0 20px 0;
+  margin-bottom: 40px;
 }
 
-header > * {
-  display: inline;
-}
-
-header nav {
-  margin-left: 10px;
-  vertical-align: 4px;
-}
-
-header nav a + a {
-  margin-left: 10px;
+nav a {
+  margin-right: 20px;
 }
 
 footer {
@@ -58,8 +57,8 @@ ol {
 }
 
 li {
-  padding: 5px 25px;
-  width: 500px;
+  padding: 5px 2.5%;
+  width: 95%;
   list-style-position: inside;
 }
 
@@ -71,7 +70,7 @@ li, td {
 table {
   table-layout: fixed;
   margin: 10px 0px;
-  width: 550px;
+  width: 100%;
 }
 
 tr {
@@ -90,6 +89,7 @@ th {
 }
 
 td {
+  text-align: center;
   width: 200px;
 }
 
@@ -117,9 +117,8 @@ td.action, th.action {
 #page {
   margin-left: auto;
   margin-right: auto;
-  border-left: 1px solid #999;
-  border-right: 1px solid #999;
-  width: 600px;
+  border: 1px solid #999;
+  width: 900px;
   padding: 25px;
   background-color: #dedede;
 }
