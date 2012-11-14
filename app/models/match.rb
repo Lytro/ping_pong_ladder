@@ -18,14 +18,6 @@ class Match < ActiveRecord::Base
   end
 
   def update_player_ranks
-    if Player.sum(:rank) == 0
-      winner.update_attributes :rank => 1, :active => true
-      loser.update_attributes :rank => 2, :active => true
-      return
-    elsif loser.rank.nil?
-      return
-    end
-    
     winner_rank = winner.rank || Player.maximum(:rank) + 1
     if winner_rank > loser.rank
       new_rank = (winner_rank + loser.rank) / 2

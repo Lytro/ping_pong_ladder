@@ -5,6 +5,8 @@ class Player < ActiveRecord::Base
   before_validation :downcase_name
   before_save :clear_ranks_for_inactive_players
 
+  before_create :update_rank
+
   validates :name, presence: true
   validates_uniqueness_of :name
   validates_uniqueness_of :rank, :allow_nil => true
@@ -40,5 +42,9 @@ class Player < ActiveRecord::Base
 
   def clear_ranks_for_inactive_players
     self.rank = nil if self.inactive?
+  end
+
+  def update_rank
+    self.rank = Player.count + 1
   end
 end
