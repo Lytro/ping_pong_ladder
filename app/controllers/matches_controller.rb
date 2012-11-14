@@ -11,7 +11,11 @@ class MatchesController < ApplicationController
     match = Match.new winner: winner, loser: loser
 
     unless [winner, loser].all?(&:valid?) && match.save
-      flash.alert = "Must specify a winner and a loser to post a match."
+      if match.errors.present?
+        flash.alert = match.errors.full_messages.join('\n')
+      else
+        flash.alert = "Must specify a winner and a loser to post a match."
+      end
     end
 
     redirect_to matches_path

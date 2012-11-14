@@ -2,6 +2,7 @@ class Match < ActiveRecord::Base
   validates :winner,      presence: true
   validates :loser,       presence: true
   validates :occured_at,  presence: true
+  validate :daily_limit
 
   belongs_to :winner, :class_name => 'Player'
   belongs_to :loser, :class_name => 'Player'
@@ -11,6 +12,7 @@ class Match < ActiveRecord::Base
   after_save :update_player_ranks
   after_save :mark_inactive_players
 
+  scope :occurred_today, where("occured_at >= ? AND occured_at <= ?", Date.today.beginning_of_day, Date.today.end_of_day)
   private
 
   def set_default_occured_at_date
@@ -38,5 +40,12 @@ class Match < ActiveRecord::Base
     end
 
     Player.compress_ranks
+  end
+
+  def daily_limit
+    match_player_ids = Match.occurred_today.map{|match| [match.winner_id, match.loser_id]}.uniq
+    match_player_ids.each do |match|
+      errors[:bad_match] << "- Already played today!" if (([winner_id, loser_id] & match) == [winner_id, loser_id])
+    end
   end
 end
