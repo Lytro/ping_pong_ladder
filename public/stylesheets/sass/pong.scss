@@ -25,13 +25,12 @@ h1, h3 {
 a {
   text-decoration: none;
   color: #6e1674;
-}
-
-a.current {
-  color: #eee;
-  background-color: #6e1674;
-  border-radius: 4px;
-  padding: 5px;
+  &.current {
+    color: #eee;
+    background-color: #6e1674;
+    border-radius: 4px;
+    padding: 5px;
+  }
 }
 
 .logo-area {
@@ -47,18 +46,16 @@ header {
 
 nav {
   height: 30px;
-}
-
-nav a {
-  margin-right: 20px;
+  a {
+    margin-right: 20px;
+  }
 }
 
 footer {
   font-size: 12px;
-}
-
-footer a {
-  float: right;
+  a {
+    float: right;
+  }
 }
 
 ol {
@@ -150,35 +147,38 @@ td.action, th.action {
 .tab-bar {
   list-style-type: none;
   margin-bottom: 20px;
+  li { display: inline; }
 }
 
-.tab-bar li { display: inline; }
-
-.flash { margin-bottom: 10px; }
-
-.flash .alert {
-  color: white;
-  border: 1px solid #8b0000;
-  background-color: #db7093;
-  padding: 10px;
-  border-radius: 4px;
+.flash {
+  margin-bottom: 10px;
+  .alert {
+    color: white;
+    border: 1px solid #8b0000;
+    background-color: #db7093;
+    padding: 10px;
+    border-radius: 4px;
+  }
+  .notice {
+    color: green;
+    border: 1px solid #2e8b57;
+    background-color: #98fb98;
+    padding: 10px;
+    border-radius: 4px;
+  }
 }
 
-.flash .notice {
-  color: green;
-  border: 1px solid #2e8b57;
-  background-color: #98fb98;
-  padding: 10px;
-  border-radius: 4px;
-}
 
-.player .avatar,
-.player .stats,
-.player .stat { float: left; }
-.player .avatar { width: 350px; }
-.player .stats {
-  width: 480px;
-  text-align: center;
+.player {
+  .avatar, .stats, .stat { float: left; }
+  .avatar { width: 350px; }
+  .stats {
+    width: 480px;
+    text-align: center;
+  }
+}
+.player > h1 {
+  color: #ed174f;
 }
 .player .stat { width: 240px; }
 
