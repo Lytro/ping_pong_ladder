@@ -21,13 +21,16 @@ class Match < ActiveRecord::Base
 
   def update_player_ranks
     winner_rank = winner.rank || Player.maximum(:rank) + 1
-    if winner_rank > loser.rank
-      new_rank = (winner_rank + loser.rank) / 2
+    loser_rank = loser.rank || Player.maximum(:rank) + 1
+
+    if winner_rank > loser_rank
+      new_rank = (winner_rank + loser_rank) / 2
       winner.update_attributes :rank => nil
       Player.where(['rank < ? AND rank >= ?', winner_rank, new_rank]).order('rank desc').each do |player|
         player.update_attributes :rank => player.rank + 1
       end
       winner.update_attributes :rank => new_rank, :active => true
+      loser.update_attributes :active => true
     end
   end
 

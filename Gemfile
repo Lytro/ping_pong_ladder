@@ -8,6 +8,7 @@ gem 'jquery-rails'
 group :test, :development do
   gem 'sqlite3'
   gem 'rspec-rails', '~> 2.4'
+  gem 'awesome_print', '~> 1.0'
 end
 
 group :production do

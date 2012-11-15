@@ -11,10 +11,10 @@ describe SaveRankingsToPlayer do
       it "doesn't assign ranks" do
         SaveRankingsToPlayer.run
         
-        p1.rank.should be_nil
-        p2.rank.should be_nil
-        p3.rank.should be_nil
-        p4.rank.should be_nil
+        p1.reload.rank.should be_nil
+        p2.reload.rank.should be_nil
+        p3.reload.rank.should be_nil
+        p4.reload.rank.should be_nil
       end
     end
 

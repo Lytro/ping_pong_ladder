@@ -18,7 +18,7 @@ describe Match do
     let!(:p2) { Player.create(name: "p2") }
     let!(:p3) { Player.create(name: "p3") }
     let!(:p4) { Player.create(name: "p4") }
-    let!(:p5) { Player.create(name: "p5", rank: nil) }
+    let!(:p5) { Player.create(name: "p5") }
     let!(:establishing_match1) { Match.create(winner: p1.reload, loser: p4.reload) }
     let!(:establishing_match2) { Match.create(winner: p3.reload, loser: p4.reload) }
     let!(:establishing_match3) { Match.create(winner: p2.reload, loser: p1.reload) }
@@ -83,28 +83,6 @@ describe Match do
         p4.reload.rank.should == 5
       end
     end
-
-    context "when no players have ranks yet" do
-      before do
-        Player.update_all :rank => nil
-      end
-
-      it "should assign the winner to be rank 1 and the loser to rank 2" do
-        Match.create(winner: p2, loser: p3)
-
-        p2.reload.rank.should == 1
-        p3.reload.rank.should == 2
-      end
-    end
-
-    context "when other players have ranks, but not the loser does not" do
-      it "should not update ranks for the players in this match" do
-        Match.create(winner: p4, loser: p5)
-
-        p4.reload.rank.should == 4
-        p5.reload.rank.should be_nil
-      end
-    end
   end
 
   describe "marking players inactive" do
@@ -150,17 +128,20 @@ describe Match do
   end
 
   describe "reactivating players" do
-    let!(:p1) { Player.create(name: "foo", rank: nil, active: false) }
-    let!(:p2) { Player.create(name: "bar", rank: 1, active: true) }
+    let!(:p1) { Player.create(name: "foo") }
+    let!(:p2) { Player.create(name: "bar") }
 
+    before do
+      p2.update_attributes(rank: nil, active: false)
+    end
     it "should reactivate inactive players when they win a match" do
       Match.create(winner: p1, loser: p2)
       p1.reload.should be_active
     end
 
-    it "should not reactivate inactive players when the lose a match" do
+    it "should reactivate inactive players when the lose a match" do
       Match.create(winner: p2, loser: p1)
-      p1.reload.should be_inactive
+      p1.reload.should be_active
     end
   end
 end

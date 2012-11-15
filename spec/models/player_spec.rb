@@ -14,10 +14,11 @@ describe Player do
   end
 
   it "should validate unique ranks" do
-    Player.create(name: 'p1', rank: 3)
-    p = Player.new(name: 'p2', rank: 3)
-    p.should_not be_valid
-    p.error_on(:rank).should be_present
+    p1 = Player.create(name: 'p1')
+    p2 = Player.create(name: 'p2')
+    p1.rank.should_not be_nil
+    p2.rank.should_not be_nil
+    p1.rank.should_not == p2.rank
   end
 
   it "requires a name" do
@@ -25,10 +26,10 @@ describe Player do
   end
 
   it "clears ranks when players become inactive" do
-    p1 = Player.create(name: "foo", rank: 3, active: true)
+    p1 = Player.create(name: "foo")
     p1.should be_active
-    p1.rank.should == 3
-    p1.update_attributes :active => false
+    p1.rank.should == 1
+    Match.new.send(:mark_inactive_players)
     p1.reload.should be_inactive
     p1.rank.should be_nil
   end
@@ -39,17 +40,21 @@ describe Player do
   end
 
   describe "ranked" do
-    let!(:me) { Player.create(name: "me", rank: 2) }
-    let!(:you) { Player.create(name: "you", rank: 1) }
-    let!(:us) { Player.create(name: "us", rank: nil) }
+    let!(:me) { Player.create(name: "me") }
+    let!(:you) { Player.create(name: "you") }
+    let!(:us) { Player.create(name: "us") }
     subject { Player.ranked }
-    it { should == [you, me] }
+    it { should == [me, you, us] }
   end
 
   describe ".active and .inactive" do
-    let!(:me) { Player.create(name: "me", rank: nil, active: true) }
-    let!(:you) { Player.create(name: "you", rank: 1, active: true) }
-    let!(:us) { Player.create(name: "us", rank: 2, active: false) }
+    let!(:me) { Player.create(name: "me") }
+    let!(:you) { Player.create(name: "you") }
+    let!(:us) { Player.create(name: "us") }
+
+    before do
+      us.update_attributes(:rank => nil, :active => false)
+    end
 
     it "should scope players correctly" do
       Player.active.should == [me, you]
