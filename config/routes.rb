@@ -5,5 +5,6 @@ Pong::Application.routes.draw do
       get 'players'
     end
   end
+  resources :players, :only => [:show]
   root to: 'matches#rankings'
 end

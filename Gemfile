@@ -4,6 +4,7 @@ gem 'rake', '< 0.9'
 gem 'rails'
 gem 'haml-rails'
 gem 'jquery-rails'
+gem 'sass'
 
 group :test, :development do
   gem 'sqlite3'

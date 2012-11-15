@@ -1,0 +1,14 @@
+.player
+  %h1= @player.name
+  .avatar= image_tag 'placeholder.png'
+  .stats
+    .stat.wins
+      %h1 wins
+      %h1= @player.winning_matches.count
+    .stat.losses
+      %h1 losses
+      %h1= @player.losing_matches.count
+    .clearfix
+  .clearfix
+
+  .back= link_to "Back", root_url

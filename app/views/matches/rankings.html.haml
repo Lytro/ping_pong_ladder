@@ -8,7 +8,7 @@
 
   %ol#all-time.rankings
     - @rankings.each do |player|
-      %li{class: cycle("even", "odd")}= player.display_name
+      %li{class: cycle("even", "odd")}= link_to player.display_name, player
 
   - reset_cycle
 

@@ -10,11 +10,18 @@ body > * {
   box-sizing: border-box;
 }
 
+.clearfix {
+  clear: both;
+}
+
 h1, h3 {
   font-size: 36px;
   margin: 10px 0;
 }
-
+.stat_header {
+  font-size: 40px;
+  font-weight: bold;
+}
 a {
   text-decoration: none;
   color: #6e1674;
@@ -142,15 +149,12 @@ td.action, th.action {
 
 .tab-bar {
   list-style-type: none;
+  margin-bottom: 20px;
 }
 
-.tab-bar li {
-  display: inline;
-}
+.tab-bar li { display: inline; }
 
-.flash {
-  margin-bottom: 10px;
-}
+.flash { margin-bottom: 10px; }
 
 .flash .alert {
   color: white;
@@ -167,3 +171,15 @@ td.action, th.action {
   padding: 10px;
   border-radius: 4px;
 }
+
+.player .avatar,
+.player .stats,
+.player .stat { float: left; }
+.player .avatar { width: 350px; }
+.player .stats {
+  width: 480px;
+  text-align: center;
+}
+.player .stat { width: 240px; }
+
+.player .avatar img { border: 1px solid #708090; }
