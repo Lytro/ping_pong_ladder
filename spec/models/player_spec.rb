@@ -69,6 +69,9 @@ describe Player do
     let!(:m1) { Match.create(winner: player, loser: opponent) }
     it { should == m1 }
 
+    before do
+      Match.update_all :occured_at => 1.day.ago
+    end
     context "multiple matches" do
       let!(:m2) { Match.create(winner: opponent, loser: player) }
       it { should == m2 }

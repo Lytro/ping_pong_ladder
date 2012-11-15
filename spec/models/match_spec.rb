@@ -63,7 +63,9 @@ describe Match do
     context "moving halfway to the loser" do
       it "should update intermediary players correctly" do
         Player.update_all :active => true
-        Match.create(winner: p4, loser: p1)
+        Match.update_all :occured_at => 1.day.ago
+        players = Player.all.map{|p|[p.name, p.rank]}
+        m = Match.create(winner: p4, loser: p1)
 
         p1.reload.rank.should == 1
         p4.reload.rank.should == 2
