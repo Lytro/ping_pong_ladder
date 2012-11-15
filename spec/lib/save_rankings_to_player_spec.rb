@@ -45,8 +45,8 @@ describe SaveRankingsToPlayer do
           Player.update_all(:active => false)
           SaveRankingsToPlayer.run
 
-          p1.reload.rank.should == 2
-          p2.reload.rank.should == 1
+          p1.reload.rank.should == 1
+          p2.reload.rank.should == 2
           p3.reload.rank.should be_nil
           p4.reload.rank.should be_nil
         end
