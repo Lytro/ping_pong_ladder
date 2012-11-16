@@ -1,5 +1,6 @@
 class MatchesController < ApplicationController
   skip_before_filter :verify_authenticity_token, only: :create
+  skip_before_filter :authenticate, only: :show
 
   include MatchesHelper
 
@@ -29,6 +30,12 @@ class MatchesController < ApplicationController
   def index
     @match = Match.new
     @matches = Match.order("occured_at desc")
+  end
+
+  def show
+    @match = Match.find(params[:id])
+    @winner = @match.winner
+    @loser = @match.loser
   end
 
   def rankings
