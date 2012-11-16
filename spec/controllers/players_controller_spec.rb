@@ -7,6 +7,7 @@ describe PlayersController do
     it "should load the correct player" do
       get :show, :id => me.to_param
       assigns(:player).should == me
+      assigns(:match).should == me.most_recent_match
       response.should be_success
     end
   end

@@ -12,4 +12,16 @@
     .clearfix
   .clearfix
 
+  %hr
+  %h2 Most recent match
+  %table
+    %tr
+      %th.date Date
+      %th Winner
+      %th Loser
+    %tr{class: cycle("even", "odd")}
+      %td.date= @match.occured_at.strftime("%Y-%m-%d")
+      %td= @match.winner.display_name
+      %td= @match.loser.display_name
+
   .back= link_to "Back", root_url

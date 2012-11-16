@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'save_rankings_to_player'
 
 describe SaveRankingsToPlayer do
   describe ".run" do

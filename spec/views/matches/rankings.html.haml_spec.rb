@@ -1,6 +1,8 @@
+require 'spec_helper'
+
 describe "matches/rankings.html.haml" do
-  let(:me) { Player.create(name: "me", rank: 1) }
-  let(:you) { Player.create(name: "you", rank: 2) }
+  let(:me) { Player.create(name: "me") }
+  let(:you) { Player.create(name: "you") }
   before do
     assign :rankings, [me, you]
     assign :last_30_days_rankings, ["one", "two"]
