@@ -15,6 +15,18 @@ describe MatchesController do
     it { assigns(:match).should be }
   end
 
+  describe "GET #show" do
+    let(:occured_at) { Time.now }
+    let(:me) { Player.create(name: "me") }
+    let(:you) { Player.create(name: "you") }
+    let!(:match) { Match.create(winner: me, loser: you, occured_at: occured_at) }
+    it "should assign values for the match and players" do
+      get :show, :id => match.to_param
+      assigns(:match).should == match
+      assigns(:winner).should == match.winner
+      assigns(:loser).should == match.loser
+    end
+  end
   describe "POST #create" do
     let(:match_params) { {winner_name: "taeyang", loser_name: "se7en" } }
 
