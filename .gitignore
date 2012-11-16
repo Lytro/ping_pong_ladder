@@ -6,3 +6,4 @@ log/
 *.sqlite3
 .idea/
 config/database.yml
+.sass-cache/

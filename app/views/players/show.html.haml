@@ -19,9 +19,11 @@
       %th.date Date
       %th Winner
       %th Loser
+      %th.action Action
     %tr{class: cycle("even", "odd")}
       %td.date= @match.occured_at.strftime("%Y-%m-%d")
       %td= @match.winner.display_name
       %td= @match.loser.display_name
+      %td.action= link_to "https://twitter.com/share", 'Tweet', class: "twitter-share-button", data: {lang: "en", count: "none", text: "#{@match.winner.display_name} just beat #{@match.loser.display_name} in a vigorous game of SC Pong"}
 
   .back= link_to "Back", root_url
