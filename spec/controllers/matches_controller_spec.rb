@@ -95,8 +95,6 @@ describe MatchesController do
     before { get :rankings }
     it { should be_success }
     it { assigns(:rankings).should == [you, me] }
-    it { assigns(:last_90_days_rankings).should == ["Bro1", "Bro2", "Me", "You"]}
-    it { assigns(:last_30_days_rankings).should == ["Me", "You"]}
   end
 
   describe "GET #players" do
