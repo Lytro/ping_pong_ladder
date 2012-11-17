@@ -9,7 +9,7 @@ class Beginner < Achievement
     end
 
     def badge
-      "icon-bell"
+      "icon-check"
     end
 
     def eligible?(player)
