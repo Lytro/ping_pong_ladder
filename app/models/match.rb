@@ -10,6 +10,7 @@ class Match < ActiveRecord::Base
   before_validation :set_default_occured_at_date, on: :create
 
   after_save :update_player_ranks
+  after_save :check_achievements
   after_save :mark_inactive_players
 
   scope :occurred_today, where("occured_at >= ? AND occured_at <= ?", Date.today.beginning_of_day, Date.today.end_of_day)
@@ -49,6 +50,18 @@ class Match < ActiveRecord::Base
     match_player_ids = Match.occurred_today.map{|match| [match.winner_id, match.loser_id]}.uniq
     match_player_ids.each do |match|
       errors[:bad_match] << "- Already played today!" if (([winner_id, loser_id] & match) == [winner_id, loser_id])
+    end
+  end
+
+  def check_achievements
+    achievements = Achievement.subclasses
+    winner_achievements_needed = achievements - winner.achievements.map(&:class)
+    loser_achievements_needed = achievements - loser.achievements.map(&:class)
+    winner_achievements_needed.each do |achievement|
+      achievement.create(player: winner) if achievement.eligible?(winner)
+    end
+    loser_achievements_needed.each do |achievement|
+      achievement.create(player: loser) if achievement.eligible?(loser)
     end
   end
 end

@@ -10,6 +10,12 @@
       %h1 losses
       %h1= @player.losing_matches.count
     .clearfix
+    %hr
+    .badges
+      %h2 Achievements
+      - @player.achievements.each do |achievement|
+        %i{class: achievement.badge, title: "#{achievement.title} - #{achievement.description}"}
+      .clearfix
   .clearfix
 
   %hr

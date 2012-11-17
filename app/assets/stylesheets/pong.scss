@@ -167,19 +167,33 @@ td.action, th.action {
     border-radius: 4px;
   }
 }
-
+.badges {
+  font-size: 20px;
+  width: 250px;
+  display: inline-block;
+  margin-bottom: -5px;
+  h2 { margin-bottom: 10px; }
+  i {
+    display: block;
+    float: left;
+  }
+}
 
 .player {
   .avatar, .stats, .stat { float: left; }
-  .avatar { width: 350px; }
-  .stats {
-    width: 480px;
-    text-align: center;
+  .avatar {
+    width: 350px;
+    img { border: 1px solid #708090; }
   }
+  .badges { width: 100%; }
+  .stats {
+    width: 460px;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 4px;
+    border: 2px solid #000;
+    padding: 10px;
+  }
+  .stat { width: 230px; }
 }
-.player > h1 {
-  color: #ed174f;
-}
-.player .stat { width: 240px; }
-
-.player .avatar img { border: 1px solid #708090; }
+.player > h1 { color: #ed174f; }

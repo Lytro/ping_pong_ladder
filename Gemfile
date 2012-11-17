@@ -6,6 +6,7 @@ gem 'haml-rails'
 gem 'jquery-rails'
 gem 'sass'
 gem 'pg'
+gem 'font-awesome-rails'
 
 group :test, :development do
   gem 'sqlite3'

@@ -146,4 +146,23 @@ describe Match do
       p1.reload.should be_active
     end
   end
+
+  describe "#check_achievements" do
+    let!(:p1) { Player.create(name: "foo") }
+    let!(:p2) { Player.create(name: "bar") }
+
+    it "should check achievements for each player after match is created" do
+      match = Match.new(winner: p2, loser: p1)
+      match.should_receive(:check_achievements).once
+      match.save
+    end
+
+    it "should award achievements for each player that is eligible" do
+      p1.achievements.count.should == 0
+      p2.achievements.count.should == 0
+      Match.create(winner: p2, loser: p1)
+      p1.reload.achievements.count.should == 1
+      p2.reload.achievements.count.should == 1
+    end
+  end
 end
