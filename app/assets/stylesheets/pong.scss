@@ -210,3 +210,13 @@ td.action, th.action {
   .stat { width: 230px; }
 }
 .player > h1 { color: #ed174f; }
+
+.achievements {
+  td, th {
+    text-align: left;
+    &.icon  {
+      width: 100px;
+      text-align: center;
+    }
+  }
+}

@@ -1,0 +1,14 @@
+.achievements
+  %h2 Achievements
+
+  %table
+    %tr
+      %th.icon Badge
+      %th Title
+      %th Description
+    - @achievements.each do |achievement|
+      %tr{class: cycle("even", "odd")}
+        %td.icon
+          %i{class: achievement.badge}
+        %td= achievement.title
+        %td= achievement.description
