@@ -11,10 +11,11 @@
       %h1= @player.losing_matches.count
     .clearfix
     %hr
+    %h2 Achievements
     .badges
-      %h2 Achievements
       - @player.achievements.each do |achievement|
-        %i{class: achievement.badge, title: "#{achievement.title} - #{achievement.description}"}
+        = link_to '#', rel: 'popover', data: {title: achievement.title, content: achievement.description, trigger: 'hover'} do
+          %i{class: achievement.badge}
       .clearfix
   .clearfix
 
