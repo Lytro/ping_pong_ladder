@@ -31,7 +31,7 @@ class Match < ActiveRecord::Base
         player.update_attributes :rank => player.rank + 1
       end
       winner.update_attributes :rank => new_rank, :active => true
-      loser.update_attributes :active => true
+      loser.reload.update_attributes :active => true
     end
   end
 

@@ -157,12 +157,26 @@ describe Match do
       match.save
     end
 
-    it "should award achievements for each player that is eligible" do
+    it "should award beginner to correct player(s)" do
       p1.achievements.count.should == 0
       p2.achievements.count.should == 0
       Match.create(winner: p2, loser: p1)
-      p1.reload.achievements.count.should == 1
-      p2.reload.achievements.count.should == 1
+      p1.reload.achievements.map(&:class).should include(Beginner)
+      p2.reload.achievements.map(&:class).should include(Beginner)
+    end
+
+    it "should award number juan to the correct player" do
+      p1.rank.should == 1
+      p2.rank.should_not == 1
+      p1.achievements.map(&:class).should_not include(NumberJuan)
+      p2.achievements.map(&:class).should_not include(NumberJuan)
+
+      Match.create(winner: p2, loser: p1)
+
+      p1.reload.rank.should == 2
+      p2.reload.rank.should == 1
+      p1.achievements.map(&:class).should_not include(NumberJuan)
+      p2.achievements.map(&:class).should include(NumberJuan)
     end
   end
 end

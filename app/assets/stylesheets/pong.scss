@@ -195,7 +195,10 @@ td.action, th.action {
     width: 350px;
     img { border: 1px solid #708090; }
   }
-  .badges { width: 100%; }
+  .badges {
+    width: 100%;
+    a { padding-right: 10px; }
+  }
   .stats {
     width: 460px;
     text-align: center;

@@ -94,7 +94,7 @@ describe MatchesController do
     let!(:two_months_ago_match) { Match.create(winner: Player.create(name: "bro1"), loser: Player.create(name: "bro2"), occured_at: occurred_at - 2.months) }
     before { get :rankings }
     it { should be_success }
-    it { assigns(:rankings).should == [you, me] }
+    it { assigns(:rankings).should == [me, you] }
   end
 
   describe "GET #players" do
