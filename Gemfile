@@ -1,12 +1,15 @@
 source 'http://rubygems.org'
 
-gem 'rake'
-gem 'rails'
+gem 'font-awesome-rails'
 gem 'haml-rails'
 gem 'jquery-rails'
-gem 'sass'
+gem 'less-rails'
 gem 'pg'
-gem 'font-awesome-rails'
+gem 'rake'
+gem 'rails'
+gem 'sass'
+gem 'therubyracer'
+gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 
 group :test, :development do
   gem 'sqlite3'

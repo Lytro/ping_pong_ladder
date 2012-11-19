@@ -6,5 +6,6 @@
       = link_to player.display_name, player
       .badges
         - player.achievements.each do |achievement|
-          %i{class: achievement.badge, title: achievement.title}
+          = link_to '#', rel: 'popover', data: {title: achievement.title, content: achievement.description, trigger: 'hover'} do
+            %i{class: achievement.badge}
         .clearfix

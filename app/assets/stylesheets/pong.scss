@@ -68,6 +68,7 @@ li {
   padding: 5px 2.5%;
   width: 95%;
   list-style-position: inside;
+  line-height: 48px;
 }
 
 li, td {
@@ -170,13 +171,21 @@ td.action, th.action {
 }
 .badges {
   font-size: 20px;
+  height: 40px;
   width: 250px;
   display: inline-block;
   margin-bottom: -5px;
   h2 { margin-bottom: 10px; }
-  i {
+  a {
     display: block;
     float: left;
+    height: 20px;
+    line-height: 20px;
+  }
+  p {
+    white-space: normal;
+    line-height: 13px;
+    font-size: 13px;
   }
 }
 
