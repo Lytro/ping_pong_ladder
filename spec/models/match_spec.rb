@@ -105,6 +105,17 @@ describe Match do
       p4.reload.should be_inactive
     end
 
+    it "should award players who are inactive with Inactive achievement if they don't have it" do
+      Player.update_all :active => true
+      p4.should be_active
+      Match.create(winner: p2, loser: p3)
+      p1.reload.should be_active
+      p2.reload.should be_active
+      p3.reload.should be_active
+      p4.reload.should be_inactive
+      p4.achievements.map(&:class).should include(Inactive)
+    end
+
     it "should mark players as inactive who have never played a game" do
       Player.update_all :active => true
       new_player = Player.create(name: "no matches")

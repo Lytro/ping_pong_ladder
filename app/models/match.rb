@@ -40,6 +40,7 @@ class Match < ActiveRecord::Base
     Player.active.each do |player|
       if player.most_recent_match.nil? || (player.most_recent_match.occured_at < cutoff)
         player.update_attributes :active => false
+        Inactive.create(player: player) if !player.achievements.map(&:class).include?(Inactive)
       end
     end
 
