@@ -35,6 +35,10 @@ class Player < ActiveRecord::Base
     end
   end
 
+  def matches
+    Match.where("winner_id = ? OR loser_id = ?", self.id, self.id).order("occured_at DESC")
+  end
+
   private
 
   def downcase_name
