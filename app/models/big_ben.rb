@@ -1,4 +1,4 @@
-class Bigben < Achievement
+class BigBen < Achievement
   class << self
     def title
       "Big Ben!"
