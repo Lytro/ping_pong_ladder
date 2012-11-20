@@ -21,7 +21,15 @@ class Player < ActiveRecord::Base
   end
 
   def most_recent_match
-    Match.where(['winner_id = ? OR loser_id = ?', id, id]).order('occured_at desc').first
+    most_recent_matches.first
+  end
+
+  def most_recent_matches
+    Match.where(['winner_id = ? OR loser_id = ?', id, id]).order('occured_at desc')
+  end
+
+  def most_recent_opponent
+    ([most_recent_match.winner, most_recent_match.loser] - [self]).first
   end
 
   def inactive?

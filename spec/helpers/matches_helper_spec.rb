@@ -28,10 +28,14 @@ describe MatchesHelper do
 
     context "moving halfway to the loser" do
       let(:matches) do
-        p1 = Player.create(name: 'p1', rank: 1)
-        p2 = Player.create(name: 'p2', rank: 3)
-        p3 = Player.create(name: 'p3', rank: 4)
-        p4 = Player.create(name: 'p4', rank: 2)
+        p1 = Player.create(name: 'p1')
+        p2 = Player.create(name: 'p2')
+        p3 = Player.create(name: 'p3')
+        p4 = Player.create(name: 'p4')
+        p1.update_attribute(:rank, 1)
+        p2.update_attribute(:rank, 3)
+        p3.update_attribute(:rank, 4)
+        p4.update_attribute(:rank, 2)
         [
           Match.create(winner: p1, loser: p2),
           Match.create(winner: p2, loser: p3),

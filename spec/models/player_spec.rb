@@ -63,23 +63,41 @@ describe Player do
   end
 
   describe "#most_recent_match" do
+    it "should return the most recent match" do
+      player = Player.create(name: "me")
+      player.stub(:most_recent_matches).and_return [1, 2, 3]
+      player.most_recent_match.should == 1
+    end
+  end
+
+  describe "#most_recent_matches" do
     let!(:player) { Player.create(name: "me") }
-    subject { player.most_recent_match }
+    subject { player.most_recent_matches }
     let!(:opponent) { Player.create(name: "you") }
     let!(:m1) { Match.create(winner: player, loser: opponent) }
-    it { should == m1 }
+    it { should == [m1] }
 
     before do
       Match.update_all :occured_at => 1.day.ago
     end
     context "multiple matches" do
       let!(:m2) { Match.create(winner: opponent, loser: player) }
-      it { should == m2 }
+      it { should == [m2, m1] }
 
       context "with retro-actively created matches" do
         let!(:m3) { Match.create(winner: player, loser: opponent, occured_at: 1.day.ago) }
-        it { should == m2 }
+        it { should == [m2, m1] }
       end
+    end
+  end
+
+  describe "#most_recent_opponent" do
+    it "should return the most recent opponent" do
+      me = Player.create(name: "me")
+      you = Player.create(name: "you")
+      Match.create(winner: me, loser: you)
+      me.most_recent_opponent.should == you
+      you.most_recent_opponent.should == me
     end
   end
 
