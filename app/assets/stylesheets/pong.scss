@@ -189,6 +189,12 @@ td.action, th.action {
   }
 }
 
+.rankings {
+  .badges {
+    float: right;
+    a { float: right; }
+  }
+}
 .player {
   .avatar, .stats, .stat { float: left; }
   .avatar {
