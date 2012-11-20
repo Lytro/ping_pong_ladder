@@ -12,7 +12,6 @@ describe WorkingHard do
   end
 
   describe "#eligible" do
-    let(:you) { Player.create(name: "you") }
     it "should be eligible if you log more than 10 matches in a single day" do
       me.stub_chain(:matches, :occurred_today, :size).and_return(10)
       WorkingHard.eligible?(me).should be_true

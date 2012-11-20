@@ -12,7 +12,6 @@ describe LittleBen do
   end
 
   describe "#eligible" do
-    let(:you) { Player.create(name: "you") }
     it "should be eligible if you log more than 50 matches" do
       me.stub_chain(:matches, :limit, :size).and_return(50)
       LittleBen.eligible?(me).should be_true
