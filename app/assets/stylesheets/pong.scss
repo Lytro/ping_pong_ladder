@@ -230,3 +230,24 @@ td.action, th.action {
 .post {
   li { line-height: inherit; }
 }
+
+.badge-large {
+  font-size: 40px;
+  line-height: 40px;
+  color: #6e1674;
+}
+
+.badge-wrap {
+  margin-bottom: 20px;
+  .badge-large, .badge-wrap-right {
+    display: inline-block;
+  }
+}
+
+.modal {
+  width: 700px;
+  margin-left: -350px;
+  th {
+    text-align: center;
+  }
+}

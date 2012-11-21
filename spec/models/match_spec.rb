@@ -189,5 +189,10 @@ describe Match do
       p1.achievements.map(&:class).should_not include(NumberJuan)
       p2.achievements.map(&:class).should include(NumberJuan)
     end
+
+    it "should assign the match to the achievement" do
+      m = Match.create(winner: p2, loser: p1)
+      p1.reload.achievements.should be_all{|a| a.match.should == m}
+    end
   end
 end

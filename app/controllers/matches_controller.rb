@@ -19,7 +19,7 @@ class MatchesController < ApplicationController
       end
     end
 
-    redirect_to matches_path
+    redirect_to matches_path(d: true)
   end
 
   def destroy
@@ -30,6 +30,7 @@ class MatchesController < ApplicationController
   def index
     @match = Match.new
     @matches = Match.order("occured_at desc")
+    @most_recent_match = @matches.first if params[:d]
   end
 
   def show

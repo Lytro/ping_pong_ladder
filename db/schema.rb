@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(:version => 20121121080602) do
     t.string   "type"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.integer  "match_id"
   end
 
   create_table "logs", :force => true do |t|

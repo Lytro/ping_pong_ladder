@@ -7,6 +7,8 @@ class Match < ActiveRecord::Base
   belongs_to :winner, :class_name => 'Player'
   belongs_to :loser, :class_name => 'Player'
 
+  has_many :achievements
+
   before_validation :set_default_occured_at_date, on: :create
 
   after_save :update_player_ranks
@@ -65,10 +67,10 @@ class Match < ActiveRecord::Base
     winner_achievements_needed = achievements - winner.achievements.map(&:class)
     loser_achievements_needed = achievements - loser.achievements.map(&:class)
     winner_achievements_needed.each do |achievement|
-      achievement.create(player: winner) if achievement.eligible?(winner)
+      achievement.create(player: winner, match: self) if achievement.eligible?(winner)
     end
     loser_achievements_needed.each do |achievement|
-      achievement.create(player: loser) if achievement.eligible?(loser)
+      achievement.create(player: loser, match: self) if achievement.eligible?(loser)
     end
   end
 end
