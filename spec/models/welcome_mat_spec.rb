@@ -18,8 +18,8 @@ describe WelcomeMat do
     let!(:match_2) { Match.create(winner: me, loser: him) }
 
     it "should be eligible if you play someone not yet on the ladder(only 1 match)" do
-      me.most_recent_matches.size.should == 2
-      him.most_recent_matches.size.should == 1
+      me.matches.size.should == 2
+      him.matches.size.should == 1
       WelcomeMat.eligible?(me).should be_true
       WelcomeMat.eligible?(him).should_not be_true
     end

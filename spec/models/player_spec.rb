@@ -65,14 +65,14 @@ describe Player do
   describe "#most_recent_match" do
     it "should return the most recent match" do
       player = Player.create(name: "me")
-      player.stub(:most_recent_matches).and_return [1, 2, 3]
+      player.stub(:matches).and_return [1, 2, 3]
       player.most_recent_match.should == 1
     end
   end
 
-  describe "#most_recent_matches" do
+  describe "#matches" do
     let!(:player) { Player.create(name: "me") }
-    subject { player.most_recent_matches }
+    subject { player.matches }
     let!(:opponent) { Player.create(name: "you") }
     let!(:m1) { Match.create(winner: player, loser: opponent) }
     it { should == [m1] }

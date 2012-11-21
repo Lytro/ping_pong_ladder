@@ -13,7 +13,7 @@ class WelcomeMat < Achievement
     end
 
     def eligible?(player)
-      player.most_recent_opponent.most_recent_matches.size == 1
+      player.most_recent_opponent.matches.size == 1
     end
   end
 end
