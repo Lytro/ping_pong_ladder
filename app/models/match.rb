@@ -10,6 +10,7 @@ class Match < ActiveRecord::Base
   before_validation :set_default_occured_at_date, on: :create
 
   after_save :update_player_ranks
+  after_save :create_logs
   after_save :check_achievements
   after_save :mark_inactive_players
 
@@ -33,6 +34,11 @@ class Match < ActiveRecord::Base
       winner.update_attributes :rank => new_rank, :active => true
       loser.reload.update_attributes :active => true
     end
+  end
+
+  def create_logs
+    winner.logs.create(match: self, rank: winner.rank)
+    loser.logs.create(match: self, rank: loser.rank)
   end
 
   def mark_inactive_players

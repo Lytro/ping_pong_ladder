@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121116092028) do
+ActiveRecord::Schema.define(:version => 20121121024312) do
 
   create_table "achievements", :force => true do |t|
     t.integer  "player_id"
@@ -21,6 +21,12 @@ ActiveRecord::Schema.define(:version => 20121116092028) do
     t.string   "type"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "logs", :force => true do |t|
+    t.integer "player_id"
+    t.integer "match_id"
+    t.integer "rank"
   end
 
   create_table "matches", :force => true do |t|

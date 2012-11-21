@@ -1,11 +1,12 @@
 - content_for :title, "Rankings"
-
-%ol
-  - @rankings.each do |player|
-    %li{class: cycle("even", "odd")}
-      = link_to player.display_name, player
-      .badges
-        - player.achievements.each do |achievement|
-          = link_to '#', rel: 'popover', data: {title: achievement.title, content: achievement.description, trigger: 'hover'} do
-            %i{class: achievement.badge}
+.rankings
+  %ol
+    - @rankings.each do |player|
+      %li{class: cycle("even", "odd")}
+        = link_to player.display_name, player
+        .badges
+          - player.achievements.each do |achievement|
+            = link_to '#', rel: 'popover', data: {title: achievement.title, content: achievement.description, trigger: 'hover'} do
+              %i{class: achievement.badge}
+          .clearfix
         .clearfix
