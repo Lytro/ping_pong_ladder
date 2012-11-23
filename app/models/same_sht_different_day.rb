@@ -1,4 +1,4 @@
-class SameShtDifferentDay
+class SameShtDifferentDay < Achievement
   class << self
     def title
       "Same Sh*t, Different Day"
