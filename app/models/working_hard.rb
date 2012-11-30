@@ -5,7 +5,7 @@ class WorkingHard < Achievement
     end
 
     def description
-      "Log more than 10 matches in a single day"
+      "Log more than 5 matches in a single day"
     end
 
     def badge
@@ -13,7 +13,7 @@ class WorkingHard < Achievement
     end
 
     def eligible?(player)
-      player.matches.occurred_today.size > 9
+      player.matches.occurred_today.size > 5
     end
   end
 end
