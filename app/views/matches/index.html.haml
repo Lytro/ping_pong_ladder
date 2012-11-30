@@ -22,8 +22,8 @@
       %td.date= m.occured_at.strftime("%Y-%m-%d")
       %td= m.winner.display_name
       %td= m.loser.display_name
-      %td.action= link_to "https://twitter.com/share", 'Tweet', class: "twitter-share-button", data: {lang: "en", count: "none", text: "#{m.winner.display_name} just beat #{m.loser.display_name} in a vigorous game of SC Pong", url: match_url(m)}
-
+      %td.action
+        = link_to '#', 'https://twitter.com/intent/tweet', class: "twitter-share-button", data: {lang: "en", count: "none", text: "#{m.winner.display_name} just beat #{m.loser.display_name} in a vigorous game of SC Pong", url: match_url(m)}
 - if @most_recent_match && @most_recent_match.achievements.present?
   .modal.fade
     .modal-header

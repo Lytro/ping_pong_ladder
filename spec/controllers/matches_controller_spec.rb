@@ -9,11 +9,19 @@ describe MatchesController do
     let(:you) { Player.create(name: "you") }
     let!(:newer_match) { Match.create(winner: me, loser: you, occured_at: occured_at) }
     let!(:older_match) { Match.create(winner: you, loser: me, occured_at: occured_at - 1.day) }
-    before { get :index, d: true }
-    it { should be_success }
-    it { assigns(:matches).should == Match.order("occured_at desc") }
-    it { assigns(:match).should be }
-    it { assigns(:most_recent_match).should == Match.order("occured_at desc").first }
+
+    describe "when achievements are won from a match" do
+      before { get :index, d: true }
+      it { should be_success }
+      it { assigns(:matches).should == Match.order("occured_at desc") }
+      it { assigns(:match).should be }
+      it { assigns(:most_recent_match).should == Match.order("occured_at desc").first }
+    end
+
+    describe "when an achievement qualifying from twitter passes in a match id into d" do
+      before { get :index, d: newer_match.id }
+      it { assigns(:most_recent_match).should == newer_match }
+    end
   end
 
   describe "GET #show" do

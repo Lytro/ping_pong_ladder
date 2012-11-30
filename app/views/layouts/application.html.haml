@@ -26,4 +26,29 @@
       %footer
         = link_to "source code", "https://github.com/driedyam/pivot-pong"
 
-    = javascript_include_tag 'tweet_button'
+    :javascript
+      window.twttr = (function (d,s,id) {
+      var t, js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return; js=d.createElement(s); js.id=id;
+      js.src="//platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js, fjs);
+      return window.twttr || (t = { _e: [], ready: function(f){ t._e.push(f) } });
+      }(document, "script", "twitter-wjs"));
+      function getURLParameter(name, url) {
+        return decodeURIComponent(
+          (RegExp(name + '=' + '(.+?)(&|$)').exec(url)||[,null])[1]
+        );
+      }
+      twttr.ready(function (twttr) {
+        twttr.events.bind('tweet', function(event) {
+          var match_id = parseInt(getURLParameter("url", event.target.src).split('/').slice(-1)[0]);
+          $.ajax({url: '/api/tweet',
+                  data: { match_id: match_id },
+                  type: 'GET'
+                  }).done(function(data){
+                    if(data == "true"){
+                      window.location = '/matches?d=' + match_id;
+                    };
+                  });
+        });
+      });
