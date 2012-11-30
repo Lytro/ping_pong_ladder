@@ -12,7 +12,7 @@ describe BraggingRights do
   end
 
   describe "#eligible" do
-    it "Tweet your victory!" do
+    it "should never be eligible" do
       BraggingRights.eligible?(me).should be_false
     end
   end

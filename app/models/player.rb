@@ -1,4 +1,6 @@
 class Player < ActiveRecord::Base
+  mount_uploader :avatar, AvatarUploader
+
   has_many :winning_matches, :class_name => 'Match', :foreign_key => 'winner_id'
   has_many :losing_matches, :class_name => 'Match', :foreign_key => 'loser_id'
   has_many :achievements

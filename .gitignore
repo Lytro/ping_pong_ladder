@@ -7,3 +7,4 @@ log/
 .idea/
 config/database.yml
 .sass-cache/
+public/uploads

@@ -1,7 +1,17 @@
 - content_for :title, @player.name
 .player
-  %h1= @player.name
-  .avatar= image_tag 'placeholder.png'
+  %h1= @player.display_name
+  .avatar
+    - if @player.avatar.blank?
+      = image_tag 'placeholder.png'
+    - else
+      = image_tag @player.avatar
+    = link_to 'change photo', '#', onclick: "$('.change_photo').toggle()"
+    .change_photo
+      = form_for @player, :url => { :action => "update" }, :html => {:class => "avatar_form"} do |f|
+        = f.file_field :avatar
+        = f.submit "update"
+
   .stats
     .stat.wins
       %h1 wins
@@ -34,3 +44,33 @@
       %td.action= link_to "https://twitter.com/share", 'Brag', class: "twitter-share-button", data: {lang: "en", count: "none", text: "#{@match.winner.display_name} just beat #{@match.loser.display_name} in a vigorous game of SC Pong", url: match_url(@match)}
 
   .back= link_to "Back", root_url
+
+- if @achievement
+  .modal.fade
+    .modal-header
+      %button.close{data: {dismiss: "modal"}}
+        &times;
+      %h4
+        Achievement unlocked!
+    .modal-body
+      %table.table
+        %thead
+          %tr
+            %th= @player.display_name
+        %tbody
+          %tr
+            %td
+              .badge-wrap
+                .badge-large
+                  %i{class: @achievement.badge}
+                .badge-wrap-right
+                  %strong.badge-title= @achievement.title
+                  .badge-description= @achievement.description
+
+  :javascript
+    $(function() {
+      $(".modal").modal();
+      setTimeout(function() {
+        $(".modal").modal('hide');
+      }, 8000);
+    });

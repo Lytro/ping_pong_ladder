@@ -7,7 +7,7 @@ Pong::Application.routes.draw do
     end
   end
   resources :updates, only: [:index]
-  resources :players, only: [:show]
+  resources :players, only: [:show, :update]
   resource :api do
     member do
       get 'tweet'

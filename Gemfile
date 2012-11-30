@@ -1,9 +1,12 @@
 source 'http://rubygems.org'
 
+gem 'carrierwave'
+gem 'fog'
 gem 'font-awesome-rails'
 gem 'haml-rails'
 gem 'jquery-rails'
 gem 'less-rails'
+gem 'mini_magick'
 gem 'pg'
 gem 'rake'
 gem 'rails'
