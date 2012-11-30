@@ -1,7 +1,7 @@
 class PlayersController < ApplicationController
   def show
     @player = Player.find(params[:id])
-    @match = @player.most_recent_match
+    @matches = @player.matches
     @achievement = Achievement.find_by_id(params[:a]) if params[:a]
   end
 
