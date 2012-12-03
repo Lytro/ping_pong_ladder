@@ -12,6 +12,8 @@
         = f.file_field :avatar
         = f.submit "update"
     .clearfix
+    %h5 Average games per day
+    %p= number_to_human @average_games_per_day, significant: 2
 
   .stats
     .stat.wins

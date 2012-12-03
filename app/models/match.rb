@@ -17,6 +17,8 @@ class Match < ActiveRecord::Base
   after_save :mark_inactive_players
 
   scope :occurred_today, where("occured_at >= ? AND occured_at <= ?", Date.today.beginning_of_day, Date.today.end_of_day)
+  scope :descending, order("occured_at DESC")
+
   private
 
   def set_default_occured_at_date

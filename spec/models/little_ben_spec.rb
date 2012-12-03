@@ -13,7 +13,7 @@ describe LittleBen do
 
   describe "#eligible" do
     it "should be eligible if you log more than 50 matches" do
-      me.stub_chain(:matches, :limit, :size).and_return(50)
+      me.stub_chain(:matches, :descending, :limit, :size).and_return(50)
       LittleBen.eligible?(me).should be_true
     end
   end

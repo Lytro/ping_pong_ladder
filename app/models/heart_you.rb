@@ -17,7 +17,7 @@ class HeartYou < Achievement
       players = [previous_match.winner, previous_match.loser]
       players.delete(player)
       opponent = players.first
-      last_3_matches = player.matches.limit(3)
+      last_3_matches = player.matches.descending.limit(3)
       return false if last_3_matches.size < 3
       last_3_matches.each{|match| return false if ![match.winner, match.loser].include?(opponent) }
       true

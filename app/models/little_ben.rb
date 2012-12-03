@@ -13,7 +13,7 @@ class LittleBen < Achievement
     end
 
     def eligible?(player)
-      player.matches.limit(50).size > 49
+      player.matches.descending.limit(50).size > 49
     end
   end
 end

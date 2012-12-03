@@ -65,7 +65,7 @@ describe Player do
   describe "#most_recent_match" do
     it "should return the most recent match" do
       player = Player.create(name: "me")
-      player.stub(:matches).and_return [1, 2, 3]
+      player.stub_chain(:matches, :descending).and_return [1, 2, 3]
       player.most_recent_match.should == 1
     end
   end
@@ -82,11 +82,11 @@ describe Player do
     end
     context "multiple matches" do
       let!(:m2) { Match.create(winner: opponent, loser: player) }
-      it { should == [m2, m1] }
+      it { should == [m1, m2] }
 
       context "with retro-actively created matches" do
         let!(:m3) { Match.create(winner: player, loser: opponent, occured_at: 1.day.ago) }
-        it { should == [m2, m1] }
+        it { should == [m1, m2] }
       end
     end
   end

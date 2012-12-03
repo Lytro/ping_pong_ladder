@@ -24,7 +24,7 @@ class Player < ActiveRecord::Base
   end
 
   def most_recent_match
-    matches.first
+    matches.descending.first
   end
 
   def most_recent_opponent
@@ -43,7 +43,7 @@ class Player < ActiveRecord::Base
   end
 
   def matches
-    Match.where("winner_id = ? OR loser_id = ?", id, id).order("occured_at DESC")
+    Match.where("winner_id = ? OR loser_id = ?", id, id)
   end
 
   private
