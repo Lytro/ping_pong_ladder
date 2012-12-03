@@ -14,7 +14,7 @@ describe PlayersController do
       get :show, id: me.to_param
       assigns(:player).should == me
       assigns(:matches).should == me.matches
-      assigns(:average_games_per_day).should == 1
+      #assigns(:average_games_per_day).should == 1
       response.should be_success
     end
 
