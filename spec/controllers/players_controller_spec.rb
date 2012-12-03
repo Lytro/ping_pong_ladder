@@ -6,11 +6,22 @@ describe PlayersController do
   let(:him) { Player.create(name: "him") }
 
   describe "GET #show" do
+    before do
+      Match.create(winner: me, loser: you)
+    end
+
     it "should load the correct player" do
-      get :show, :id => me.to_param
+      get :show, id: me.to_param
       assigns(:player).should == me
       assigns(:matches).should == me.matches
+      assigns(:average_games_per_day).should == 1
       response.should be_success
+    end
+
+    it "should load the achievement if set" do
+      achievement = me.achievements.first
+      get :show, id: me.to_param, a: achievement.to_param
+      assigns(:achievement).should == achievement
     end
   end
 

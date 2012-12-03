@@ -3,6 +3,8 @@ class PlayersController < ApplicationController
     @player = Player.find(params[:id])
     @matches = @player.matches
     @achievement = Achievement.find_by_id(params[:a]) if params[:a]
+    matches_by_day = @matches.group(:occured_at).count
+    @average_games_per_day = matches_by_day.values.sum.to_f/matches_by_day.keys.count.to_f
   end
 
   def update
