@@ -12,6 +12,7 @@ Pong::Application.routes.draw do
       get 'odds'
     end
   end
+  resources :stats, only: [:index]
   resource :api do
     member do
       get 'tweet'
