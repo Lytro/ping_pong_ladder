@@ -5,7 +5,6 @@
     $this.data("currentTab", $("<p></p>"));
 
     var switchToTab = function(elem) {
-      console.log(elem);
       $elem = $(elem);
       current = $this.data("currentTab");
       $(current).hide();

@@ -27,6 +27,10 @@
         = link_to '#', rel: 'popover', data: {title: achievement.title, content: achievement.description, trigger: 'hover'} do
           %i{class: achievement.badge}
       .clearfix
+    .odds
+      %h5 What are your odds of beating this person?
+      = select_tag :players, options_for_select(Player.all.map{|p| [p.name, p.id]})
+      %h3#calculator -
   .clearfix
 
   %hr
@@ -75,3 +79,14 @@
         $(".modal").modal('hide');
       }, 8000);
     });
+:javascript
+  $("#players").on('change', function(e){
+    $.ajax({url: '/players/odds',
+            data: {
+              player_id: #{@player.id},
+              opponent_id: $(e.target).val() },
+            type: 'GET'
+            }).done(function(data){
+              $('#calculator').html(parseFloat(data).toFixed(2) + '%');
+            });
+  });

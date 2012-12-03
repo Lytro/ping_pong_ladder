@@ -31,6 +31,9 @@ a {
     border-radius: 4px;
     padding: 5px;
   }
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 .logo-area {
@@ -214,6 +217,16 @@ td.action, th.action {
     padding: 10px;
   }
   .stat { width: 230px; }
+  .odds {
+    text-align: left;
+    h3 {
+      float: right;
+      width: 200px;
+      text-align: center;
+      margin-top: -6px;
+      color: #6E1674;
+    }
+  }
 }
 .player > h1 { color: #ed174f; }
 
