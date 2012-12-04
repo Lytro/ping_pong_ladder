@@ -9,7 +9,7 @@ module ApplicationHelper
   end
 
   def player_avatar(player, options = {})
-    img_src =  player.avatar.blank? ? "placeholder#{options}.png" : player.avatar.url(options)
+    img_src =  player.avatar.blank? ? "placeholder#{options unless options.empty?}.png" : player.avatar.url(options)
     image_tag img_src
   end
 end

@@ -5,4 +5,6 @@
 //= require jquery.autocomplete
 //= require twitter/bootstrap
 //= require raphael-min
+//= require g.raphael-min
+//= require g.pie-min
 //= require initialize

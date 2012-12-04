@@ -4,7 +4,7 @@
     - @rankings.each do |player|
       %li{class: cycle("even", "odd")}
         = link_to player do
-          = player_avatar(player, :thumb)
+          = player_avatar player, :thumb
           = player.display_name
         .badges
           - player.achievements.each do |achievement|
