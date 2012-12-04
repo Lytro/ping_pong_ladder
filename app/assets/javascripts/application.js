@@ -4,4 +4,5 @@
 //= require jquery.tabs
 //= require jquery.autocomplete
 //= require twitter/bootstrap
+//= require raphael-min
 //= require initialize

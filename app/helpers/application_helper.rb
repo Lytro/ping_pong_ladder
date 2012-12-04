@@ -7,4 +7,9 @@ module ApplicationHelper
   def location
     ENV["SC_PONG_LOCATION"] || "SF"
   end
+
+  def player_avatar(player, options = {})
+    img_src =  player.avatar.blank? ? "placeholder#{options}.png" : player.avatar.url(options)
+    image_tag img_src
+  end
 end

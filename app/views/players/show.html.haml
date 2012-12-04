@@ -2,10 +2,7 @@
 .player
   %h1= @player.display_name
   .avatar
-    - if @player.avatar.blank?
-      = image_tag 'placeholder.png'
-    - else
-      = image_tag @player.avatar
+    = player_avatar @player, size: 'thumbnail'
     = link_to 'change photo', '#', onclick: "$('.change_photo').toggle()"
     .change_photo
       = form_for @player, :url => { :action => "update" }, :html => {:class => "avatar_form"} do |f|
