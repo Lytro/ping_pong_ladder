@@ -30,7 +30,7 @@
     %hr
     .odds
       %h5 What are your odds of beating this person?
-      = select_tag :players, options_for_select(Player.all.map{|p| [p.name, p.id]})
+      = select_tag :players, options_from_collection_for_select(Player.all, "id", "name"), prompt: "Select a Player"
       %h3#calculator -
 .clearfix
 
