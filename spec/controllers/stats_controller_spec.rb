@@ -8,8 +8,12 @@ describe StatsController do
       Match.create(winner: me, loser: you)
       get :index
       assigns(:average_games_per_day).should == 1
-      assigns(:played_labels).sort.should == ['Me','You']
-      assigns(:played_values).should == [1,1]
+      assigns(:matches_labels).sort.should == ['Me - 1','You - 1']
+      assigns(:matches_values).should == [1,1]
+      assigns(:winning_matches_labels).sort.should == ['Me - 1','You - 0']
+      assigns(:winning_matches).should == [1,0]
+      assigns(:winning_percentage_labels).sort.should == ['Me - 100.000%','You - 0.000%']
+      assigns(:winning_percentage).should == [100.000,0.000]
     end
   end
 end
