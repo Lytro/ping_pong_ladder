@@ -1,4 +1,5 @@
 - content_for :title, @player.name
+= javascript_include_tag 'raphael-min'
 .player
   %h1= @player.display_name
   .avatar
@@ -12,14 +13,19 @@
     %h5 Average games per day
     %p= number_to_human @average_games_per_day, significant: 2
 
-  .stats
-    .stat.wins
+  .player_stats
+    .player_stat.wins
       %h1 wins
       %h1= @player.winning_matches.count
-    .stat.losses
+    .player_stat.losses
       %h1 losses
       %h1= @player.losing_matches.count
     .clearfix
+    :javascript
+      var r = Raphael(10, 50, 640, 480);
+      // Creates pie chart at with center at 320, 200,
+      // radius 100 and data: [55, 20, 13, 32, 5, 1, 2]
+      r.piechart(320, 240, 100, [55, 20, 13, 32, 5, 1, 2]);
     %hr
     .badges
       %h5 Achievements

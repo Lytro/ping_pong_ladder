@@ -1,3 +1,14 @@
 - content_for :title, "Stats"
-%h1 Average Games per Day
-%p= number_to_human @average_games_per_day, significant: 2
+%table
+  %tr
+    %td
+      %h5 Average Games per Day
+    %td
+      %h5= number_to_human @average_games_per_day, significant: 2
+#games_played.stat
+  %h1 Number of games played
+
+:javascript
+  $('document').ready(function () {
+    Raphael("games_played", 700, 700).pieChart(350, 350, 200, #{@played_values}, #{@played_labels}, "#fff");
+  });

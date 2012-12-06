@@ -18,10 +18,7 @@ h1, h3 {
   font-size: 36px;
   margin: 10px 0;
 }
-.stat_header {
-  font-size: 40px;
-  font-weight: bold;
-}
+
 a {
   text-decoration: none;
   color: #6e1674;
@@ -197,7 +194,7 @@ td.action, th.action {
   }
 }
 .player {
-  .avatar, .stats, .stat { float: left; }
+  .avatar, .player_stats, .stat { float: left; }
   .avatar {
     width: 350px;
     img { border: 1px solid #708090; }
@@ -207,7 +204,7 @@ td.action, th.action {
     display: block;
     a { padding-right: 10px; }
   }
-  .stats {
+  .player_stats {
     width: 560px;
     text-align: center;
     background-color: #fff;
@@ -215,7 +212,7 @@ td.action, th.action {
     border: 2px solid #000;
     padding: 10px;
   }
-  .stat { width: 280px; }
+  .player_stat { width: 280px; }
   .odds {
     text-align: left;
     h3 {
@@ -264,3 +261,14 @@ td.action, th.action {
   }
 }
 .change_photo { display: none; }
+
+.stat {
+  position: relative;
+  background-color: #888;
+  h1 {
+    color: #fff;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
+}

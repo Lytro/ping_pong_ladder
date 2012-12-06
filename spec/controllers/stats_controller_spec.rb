@@ -8,6 +8,8 @@ describe StatsController do
       Match.create(winner: me, loser: you)
       get :index
       assigns(:average_games_per_day).should == 1
+      assigns(:played_labels).sort.should == ['Me','You']
+      assigns(:played_values).should == [1,1]
     end
   end
 end
