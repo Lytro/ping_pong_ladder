@@ -1,5 +1,4 @@
 - content_for :title, @player.name
-= javascript_include_tag 'raphael-min'
 .player
   %h1= @player.display_name
   .avatar
@@ -33,8 +32,10 @@
       %h5 What are your odds of beating this person?
       = select_tag :players, options_from_collection_for_select(Player.all, "id", "name"), prompt: "Select a Player"
       %h3#calculator -
-.clearfix
-
+  .clearfix
+  %hr
+  %h2 Rank History
+  #rank_history.stat
   %hr
   %h2 Match History
   %table
@@ -73,7 +74,6 @@
                 .badge-wrap-right
                   %strong.badge-title= @achievement.title
                   .badge-description= @achievement.description
-
   :javascript
     $(function() {
       $(".modal").modal();
@@ -81,6 +81,77 @@
         $(".modal").modal('hide');
       }, 8000);
     });
+    
+%table#data
+  %tfoot
+    %tr
+      %th 1
+      %th 2
+      %th 3
+      %th 4
+      %th 5
+      %th 6
+      %th 7
+      %th 8
+      %th 9
+      %th 10
+      %th 11
+      %th 12
+      %th 13
+      %th 14
+      %th 15
+      %th 16
+      %th 17
+      %th 18
+      %th 19
+      %th 19
+      %th 20
+      %th 22
+      %th 23
+      %th 24
+      %th 25
+      %th 26
+      %th 27
+      %th 28
+      %th 29
+      %th 30
+      %th 31
+  %tbody
+    %tr
+      %td 8
+      %td 25
+      %td 27
+      %td 25
+      %td 54
+      %td 59
+      %td 79
+      %td 47
+      %td 27
+      %td 44
+      %td 44
+      %td 51
+      %td 56
+      %td 83
+      %td 12
+      %td 91
+      %td 52
+      %td 12
+      %td 40
+      %td 8
+      %td 60
+      %td 29
+      %td 7
+      %td 33
+      %td 56
+      %td 25
+      %td 1
+      %td 78
+      %td 70
+      %td 68
+      %td 2
+
+= javascript_include_tag 'popup'
+= javascript_include_tag 'analytics'
 :javascript
   $("#players").on('change', function(e){
     $.ajax({url: '/players/odds',
@@ -91,4 +162,7 @@
             }).done(function(data){
               $('#calculator').html(parseFloat(data).toFixed(2) + '%');
             });
+  });
+  $('document').ready(function(){
+    graphMyShiz(#{@rank_history_x},#{@rank_history_y});
   });

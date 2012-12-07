@@ -6,6 +6,9 @@ class PlayersController < ApplicationController
     @achievement = Achievement.find_by_id(params[:a]) if params[:a]
     matches_by_day = matches.group("DATE(occured_at)").count
     @average_games_per_day = matches_by_day.values.sum.to_f/matches_by_day.keys.count.to_f
+    player_logs = @player.logs
+    @rank_history_x = player_logs.map{|l| l.created_at.strftime("%y.%m.%d") }
+    @rank_history_y = player_logs.map(&:rank)
   end
 
   def update

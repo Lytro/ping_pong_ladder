@@ -1,20 +1,15 @@
 - content_for :title, "Stats"
-%table
-  %tr
-    %td
-      %h5 Average Games per Day
-    %td
-      %h5= number_to_human @average_games_per_day, significant: 2
-#games_played.stat
-  %h1 Who's playing the most?
-#winning_matches.stat
-  %h1 Who's winning the most?
+-##games_played.stat
+-#  %h1 Who's playing the most?
+-##winning_matches.stat
+-#  %h1 Who's winning the most?
 #winning_percentage.stat
   %h1 Who's has the highest percentage of winning?
 
+= javascript_include_tag 'pie'
 :javascript
   $('document').ready(function () {
-    Raphael("games_played", 800, 800).pieChart(400, 400, 200, #{@matches_values}, #{@matches_labels}, "#ccc");
-    Raphael("winning_matches", 800, 800).pieChart(400, 400, 200, #{@winning_matches}, #{@winning_matches_labels}, "#ccc");
+    //Raphael("games_played", 800, 800).pieChart(400, 400, 200, #{@matches_values}, #{@matches_labels}, "#ccc");
+    //Raphael("winning_matches", 800, 800).pieChart(400, 400, 200, #{@winning_matches}, #{@winning_matches_labels}, "#ccc");
     Raphael("winning_percentage", 800, 800).pieChart(400, 400, 200, #{@winning_percentage}, #{@winning_percentage_labels}, "#ccc");
   });
