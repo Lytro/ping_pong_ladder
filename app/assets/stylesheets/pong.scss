@@ -194,7 +194,7 @@ td.action, th.action {
   }
 }
 .player {
-  .avatar, .player_stats, .stat { float: left; }
+  .avatar, .player_stats, .player_stat { float: left; }
   .avatar {
     width: 350px;
     img { border: 1px solid #708090; }
