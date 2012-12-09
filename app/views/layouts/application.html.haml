@@ -5,6 +5,7 @@
     = stylesheet_link_tag    "application"
     = javascript_include_tag "application"
     = javascript_include_tag "http://use.typekit.com/rol0dzy.js"
+    = javascript_include_tag "snowstorm"
     = javascript_tag "try{Typekit.load();}catch(e){}"
     = favicon_link_tag
     = csrf_meta_tag
@@ -15,6 +16,7 @@
         = link_to image_tag("logo.png"), root_url
         = link_to image_tag("Panda-Aggressor.jpg"), root_url
     #page
+      = image_tag 'animatedTree.gif', id: 'tree'
       %nav
         = link_to_with_current "Rankings", root_path
         = link_to_with_current "Matches", matches_path
@@ -53,3 +55,6 @@
                   });
         });
       });
+      snowStorm.autoStart = true;
+      snowStorm.snowColor = '#00ffff'; // blue-ish snow!?
+      snowStorm.flakesMaxActive = 1000;  // show more snow on screen at once
