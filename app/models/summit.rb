@@ -14,7 +14,7 @@ class Summit < Achievement
 
     def eligible?(player)
       previous_match_date = player.most_recent_match.occured_at
-      return false if (previous_match_date < Date.new(2012,12,17)) || (previous_match_date > Date.new(2012,12,21))
+      return false if (previous_match_date < Date.new(2012,12,10)) || (previous_match_date > Date.new(2012,12,14))
       true
     end
   end
