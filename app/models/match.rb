@@ -14,6 +14,7 @@ class Match < ActiveRecord::Base
   after_save :update_player_ranks
   after_save :create_logs
   after_save :check_achievements
+  after_save :check_specials
   after_save :mark_inactive_players
 
   scope :occurred_today, where("occured_at >= ? AND occured_at <= ?", Date.today.beginning_of_day, Date.today.end_of_day)
@@ -73,6 +74,13 @@ class Match < ActiveRecord::Base
     end
     loser_achievements_needed.each do |achievement|
       achievement.create(player: loser, match: self) if achievement.eligible?(loser)
+    end
+  end
+
+  def check_specials
+    achievements = Achievement::SPECIALS
+    achievements.each do |achievement|
+      achievement.special(self)
     end
   end
 end

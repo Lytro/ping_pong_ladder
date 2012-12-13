@@ -195,4 +195,22 @@ describe Match do
       p1.reload.achievements.should be_all{|a| a.match.should == m}
     end
   end
+
+  describe "#check_specials" do
+    let!(:bobby) { Player.create(name: 'bobby isaacson') }
+    let!(:p1) { Player.create(name: 'p1') }
+
+    it "should check achievements for each player after match is created" do
+      match = Match.new(winner: bobby, loser: p1)
+      match.should_receive(:check_specials).once
+      match.save
+    end
+
+    it "should do something if special is set on achievement" do
+      Match.create(winner: p1, loser: bobby, occured_at: 1.day.ago)
+      p1.reload.achievements.map(&:class).should include(SmiteBobby)
+      Match.create(winner: bobby, loser: p1)
+      p1.reload.achievements.map(&:class).should_not include(SmiteBobby)
+    end
+  end
 end
