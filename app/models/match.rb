@@ -59,10 +59,10 @@ class Match < ActiveRecord::Base
   end
 
   def daily_limit
-    match_player_ids = Match.occurred_today.map{|match| [match.winner_id, match.loser_id]}.uniq
-    match_player_ids.each do |match|
-      errors[:bad_match] << "- Already played today!" if (([winner_id, loser_id] & match) == [winner_id, loser_id])
-    end
+    winner_id = self.winner_id
+    loser_id = self.loser_id
+    played_today = Match.where(winner_id: winner_id, loser_id: loser_id).occurred_today.present? || Match.where(winner_id: loser_id, loser_id: winner_id).occurred_today.present?
+    (errors[:bad_match] << "- Already played today!") if played_today
   end
 
   def check_achievements
