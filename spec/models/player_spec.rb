@@ -25,15 +25,6 @@ describe Player do
     Player.new.should_not be_valid
   end
 
-  it "clears ranks when players become inactive" do
-    p1 = Player.create(name: "foo")
-    p1.should be_active
-    p1.rank.should == 1
-    Match.new.send(:mark_inactive_players)
-    p1.reload.should be_inactive
-    p1.rank.should be_nil
-  end
-
   describe '#display_name' do
     subject { Player.create(name: 'scooby doo') }
     its(:display_name) { should == 'Scooby Doo' }
