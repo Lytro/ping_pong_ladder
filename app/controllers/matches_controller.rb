@@ -29,7 +29,7 @@ class MatchesController < ApplicationController
 
   def index
     @match = Match.new
-    @matches = Match.paginate(:page => params[:page])
+    @matches = Match.paginate(:page => params[:page]).order("occured_at DESC")
     @most_recent_match = Match.find_by_id(params[:d]) || @matches.first if params[:d]
   end
 
