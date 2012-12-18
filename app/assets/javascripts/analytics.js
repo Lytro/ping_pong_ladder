@@ -73,7 +73,7 @@ var graphMyShiz = function(labels, data) {
     for (var i = 0, ii = labels.length; i < ii; i++) {
         var y = Math.round(height - bottomgutter - Y * data[i]),
             x = Math.round(leftgutter + X * (i + .5)),
-            t = r.text(x, height - 6, labels[i]).attr(txt).toBack();
+            t = r.text(x, height - 6, "").attr(txt).toBack();
         if (!i) {
             p = ["M", x, y, "C", x, y];
             bgpp = ["M", leftgutter + X * .5, height - bottomgutter, "L", x, y, "C", x, y];
