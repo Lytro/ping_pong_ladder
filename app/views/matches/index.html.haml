@@ -17,6 +17,9 @@
     %th Winner
     %th Loser
     %th.action
+  %tr
+    %td{colspan: 4}
+      = will_paginate @matches
   - @matches.each do |m|
     %tr{class: cycle("even", "odd")}
       %td.date= m.occured_at.strftime("%Y-%m-%d")
@@ -24,6 +27,9 @@
       %td= m.loser.display_name
       %td.action
         = link_to '#', 'https://twitter.com/intent/tweet', class: "twitter-share-button", data: {lang: "en", count: "none", text: "#{m.winner.display_name} just beat #{m.loser.display_name} in a vigorous game of SC Pong", url: match_url(m)}
+  %tr
+    %td{colspan: 4}
+      = will_paginate @matches
 - if @most_recent_match && @most_recent_match.achievements.present?
   .modal.fade
     .modal-header

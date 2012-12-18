@@ -149,6 +149,7 @@ GEM
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.35)
+    will_paginate (3.0.3)
 
 PLATFORMS
   ruby
@@ -171,3 +172,4 @@ DEPENDENCIES
   sqlite3
   therubyracer
   twitter-bootstrap-rails!
+  will_paginate (~> 3.0)

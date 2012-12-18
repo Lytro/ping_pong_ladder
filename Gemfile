@@ -13,6 +13,7 @@ gem 'rails'
 gem 'sass'
 gem 'therubyracer'
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+gem 'will_paginate', '~> 3.0'
 
 group :test, :development do
   gem 'hashie'
