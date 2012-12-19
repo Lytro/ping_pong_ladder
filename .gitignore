@@ -8,3 +8,4 @@ log/
 config/database.yml
 .sass-cache/
 public/uploads
+.rvmrc
