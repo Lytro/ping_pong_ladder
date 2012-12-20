@@ -5,7 +5,6 @@ tmp/
 log/
 *.sqlite3
 .idea/
-config/database.yml
 .sass-cache/
 public/uploads
 .rvmrc
