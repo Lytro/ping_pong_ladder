@@ -14,7 +14,7 @@ describe Summit do
   describe "#eligible" do
     let(:you) { Player.create(name: "you") }
     it "Player a match during the Social Chorus Summit" do
-      Match.create(winner: me, loser: you, occured_at: Date.parse("2012-12-12"))
+      Match.create(winner: me, loser: you, occurred_at: Date.parse("2012-12-12"))
       Summit.eligible?(me).should be_true
       Summit.eligible?(you).should be_true
     end

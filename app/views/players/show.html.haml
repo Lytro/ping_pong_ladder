@@ -46,7 +46,7 @@
       %th.action Action
     - @matches.each do |match|
       %tr{class: cycle("even", "odd")}
-        %td.date= match.occured_at.strftime("%Y-%m-%d")
+        %td.date= match.occurred_at.strftime("%Y-%m-%d")
         %td= match.winner.display_name
         %td= match.loser.display_name
         %td.action= link_to "https://twitter.com/share", 'Brag', class: "twitter-share-button", data: {lang: "en", count: "none", text: "#{match.winner.display_name} just beat #{match.loser.display_name} in a vigorous game of SC Pong", url: match_url(match)}

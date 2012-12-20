@@ -27,7 +27,7 @@ describe PlayersController do
 
   describe "#odds" do
     it "should render probability base off of existing matches if they exist" do
-      Match.create(winner: me, loser: you, occured_at: 1.day.ago)
+      Match.create(winner: me, loser: you, occurred_at: 1.day.ago)
       Match.create(winner: you, loser: me)
       matches = me.matches.where("winner_id = ? OR loser_id = ?", you.id, you.id)
       matches.count.should == 2

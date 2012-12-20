@@ -3,9 +3,9 @@ require 'spec_helper'
 describe Match do
   describe "setting default date" do
     subject { Match.create }
-    let(:occured_at) { Time.parse("2011-03-27") }
-    before { Time.stub(:now).and_return(occured_at) }
-    its(:occured_at) { should == occured_at }
+    let(:occurred_at) { Time.parse("2011-03-27") }
+    before { Time.stub(:now).and_return(occurred_at) }
+    its(:occurred_at) { should == occurred_at }
   end
 
   describe "validations" do
@@ -63,7 +63,7 @@ describe Match do
     context "moving halfway to the loser" do
       it "should update intermediary players correctly" do
         Player.update_all :active => true
-        Match.update_all :occured_at => 1.day.ago
+        Match.update_all :occurred_at => 1.day.ago
         players = Player.all.map{|p|[p.name, p.rank]}
         m = Match.create(winner: p4, loser: p1)
 
@@ -92,8 +92,8 @@ describe Match do
     let!(:p2) { Player.create(name: "bar") }
     let!(:p3) { Player.create(name: "baz") }
     let!(:p4) { Player.create(name: "quux") }
-    let!(:m1) { Match.create(winner: p4, loser: p2, occured_at: 31.days.ago) }
-    let!(:m2) { Match.create(winner: p1, loser: p3, occured_at: 15.days.ago) }
+    let!(:m1) { Match.create(winner: p4, loser: p2, occurred_at: 31.days.ago) }
+    let!(:m2) { Match.create(winner: p1, loser: p3, occurred_at: 15.days.ago) }
 
     it "should mark players as inactive who haven't played a game in the last 30 days" do
       Player.update_all :active => true
@@ -195,7 +195,7 @@ describe Match do
     let!(:p1) { Player.create(name: 'p1') }
 
     it "should do something if special is set on achievement" do
-      Match.create(winner: p1, loser: bobby, occured_at: 1.day.ago)
+      Match.create(winner: p1, loser: bobby, occurred_at: 1.day.ago)
       p1.reload.achievements.map(&:class).should include(SmiteBobby)
       Match.create(winner: bobby, loser: p1)
       p1.reload.achievements.map(&:class).should_not include(SmiteBobby)

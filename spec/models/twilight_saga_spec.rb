@@ -14,7 +14,7 @@ describe TwilightSaga do
   describe "#eligible" do
     let(:you) { Player.create(name: "you") }
     it "Log a match after 6pm PST" do
-      Match.create(winner: me, loser: you, occured_at: (Date.today.beginning_of_day + 20.hours))
+      Match.create(winner: me, loser: you, occurred_at: (Date.today.beginning_of_day + 20.hours))
       TwilightSaga.eligible?(me).should be_true
       TwilightSaga.eligible?(you).should be_true
     end

@@ -69,14 +69,14 @@ describe Player do
     it { should == [m1] }
 
     before do
-      Match.update_all :occured_at => 1.day.ago
+      Match.update_all :occurred_at => 1.day.ago
     end
     context "multiple matches" do
       let!(:m2) { Match.create(winner: opponent, loser: player) }
       it { should == [m1, m2] }
 
       context "with retro-actively created matches" do
-        let!(:m3) { Match.create(winner: player, loser: opponent, occured_at: 1.day.ago) }
+        let!(:m3) { Match.create(winner: player, loser: opponent, occurred_at: 1.day.ago) }
         it { should == [m1, m2] }
       end
     end

@@ -4,18 +4,18 @@ describe MatchesController do
   subject { response }
 
   describe "GET #index" do
-    let(:occured_at) { Time.now }
+    let(:occurred_at) { Time.now }
     let(:me) { Player.create(name: "me") }
     let(:you) { Player.create(name: "you") }
-    let!(:newer_match) { Match.create(winner: me, loser: you, occured_at: occured_at) }
-    let!(:older_match) { Match.create(winner: you, loser: me, occured_at: occured_at - 1.day) }
+    let!(:newer_match) { Match.create(winner: me, loser: you, occurred_at: occurred_at) }
+    let!(:older_match) { Match.create(winner: you, loser: me, occurred_at: occurred_at - 1.day) }
 
     describe "when achievements are won from a match" do
       before { get :index, d: true }
       it { should be_success }
-      it { assigns(:matches).all.should eq Match.order("occured_at desc").all }
+      it { assigns(:matches).all.should eq Match.order("occurred_at desc").all }
       it { assigns(:match).should be }
-      it { assigns(:most_recent_match).should == Match.order("occured_at desc").first }
+      it { assigns(:most_recent_match).should == Match.order("occurred_at desc").first }
     end
 
     describe "when an achievement qualifying from twitter passes in a match id into d" do
@@ -25,10 +25,10 @@ describe MatchesController do
   end
 
   describe "GET #show" do
-    let(:occured_at) { Time.now }
+    let(:occurred_at) { Time.now }
     let(:me) { Player.create(name: "me") }
     let(:you) { Player.create(name: "you") }
-    let!(:match) { Match.create(winner: me, loser: you, occured_at: occured_at) }
+    let!(:match) { Match.create(winner: me, loser: you, occurred_at: occurred_at) }
     it "should assign values for the match and players" do
       get :show, :id => match.to_param
       assigns(:match).should == match
@@ -97,10 +97,10 @@ describe MatchesController do
     let!(:us) { Player.create(name: "us") }
     let!(:them) { Player.create(name: "them")}
     let(:occurred_at) { Time.now }
-    let!(:older_match) { Match.create(winner: you, loser: me, occured_at: occurred_at - 1.day) }
-    let!(:newer_match) { Match.create(winner: me, loser: you, occured_at: occurred_at) }
-    let!(:ten_months_ago_match) { Match.create(winner: Player.create(name: "one"), loser: Player.create(name: "two"), occured_at: occurred_at - 10.months) }
-    let!(:two_months_ago_match) { Match.create(winner: Player.create(name: "bro1"), loser: Player.create(name: "bro2"), occured_at: occurred_at - 2.months) }
+    let!(:older_match) { Match.create(winner: you, loser: me, occurred_at: occurred_at - 1.day) }
+    let!(:newer_match) { Match.create(winner: me, loser: you, occurred_at: occurred_at) }
+    let!(:ten_months_ago_match) { Match.create(winner: Player.create(name: "one"), loser: Player.create(name: "two"), occurred_at: occurred_at - 10.months) }
+    let!(:two_months_ago_match) { Match.create(winner: Player.create(name: "bro1"), loser: Player.create(name: "bro2"), occurred_at: occurred_at - 2.months) }
     before { get :rankings }
     it { should be_success }
     it { assigns(:rankings).should == [me, you] }

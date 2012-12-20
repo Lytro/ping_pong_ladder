@@ -14,12 +14,12 @@ describe OverlyAttached do
   describe "#eligible" do
     let(:you) { Player.create(name: "you") }
     it "should be eligible if your last 6 matches logged were with the same person" do
-      Match.create(winner: me, loser: you, occured_at: 6.days.ago)
-      Match.create(winner: me, loser: you, occured_at: 5.days.ago)
-      Match.create(winner: me, loser: you, occured_at: 4.days.ago)
-      Match.create(winner: me, loser: you, occured_at: 3.days.ago)
-      Match.create(winner: me, loser: you, occured_at: 2.days.ago)
-      Match.create(winner: me, loser: you, occured_at: 1.days.ago)
+      Match.create(winner: me, loser: you, occurred_at: 6.days.ago)
+      Match.create(winner: me, loser: you, occurred_at: 5.days.ago)
+      Match.create(winner: me, loser: you, occurred_at: 4.days.ago)
+      Match.create(winner: me, loser: you, occurred_at: 3.days.ago)
+      Match.create(winner: me, loser: you, occurred_at: 2.days.ago)
+      Match.create(winner: me, loser: you, occurred_at: 1.days.ago)
       HeartYou.eligible?(me).should be_true
     end
   end

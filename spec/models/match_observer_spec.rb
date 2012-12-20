@@ -4,7 +4,7 @@ describe MatchObserver do
   let(:me) { Player.create(name: 'me') }
   let(:you) { Player.create(name: 'you') }
   let(:observer) { MatchObserver.instance }
-  let(:match) { mock_model(Match, winner: you, loser: me, occured_at: Time.now) }
+  let(:match) { mock_model(Match, winner: you, loser: me, occurred_at: Time.now) }
 
   describe "#after_save" do
     it "should make the appropriate method calls" do
@@ -47,7 +47,7 @@ describe MatchObserver do
   describe "#check_specials" do
     it "should check and perform specials of both players" do
       bobby = Player.create(name: "bobby isaacson")
-      Match.create(winner: me, loser: bobby, occured_at: 1.day.ago)
+      Match.create(winner: me, loser: bobby, occurred_at: 1.day.ago)
       me.reload.achievements.map(&:class).should include(SmiteBobby)
       Match.create(winner: bobby, loser: me)
       me.reload.achievements.map(&:class).should_not include(SmiteBobby)

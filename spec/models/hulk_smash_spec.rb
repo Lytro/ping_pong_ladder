@@ -14,16 +14,16 @@ describe HulkSmash do
   describe "#eligible" do
     let(:you) { Player.create(name: "you") }
     it "should be eligible if your last 3 matches logged were with the same person" do
-      Match.create(winner: me, loser: you, occured_at: 10.days.ago)
-      Match.create(winner: me, loser: you, occured_at: 9.days.ago)
-      Match.create(winner: me, loser: you, occured_at: 8.days.ago)
-      Match.create(winner: me, loser: you, occured_at: 7.days.ago)
-      Match.create(winner: me, loser: you, occured_at: 6.days.ago)
-      Match.create(winner: me, loser: you, occured_at: 5.days.ago)
-      Match.create(winner: me, loser: you, occured_at: 4.days.ago)
-      Match.create(winner: me, loser: you, occured_at: 3.days.ago)
-      Match.create(winner: me, loser: you, occured_at: 2.days.ago)
-      Match.create(winner: me, loser: you, occured_at: 1.days.ago)
+      Match.create(winner: me, loser: you, occurred_at: 10.days.ago)
+      Match.create(winner: me, loser: you, occurred_at: 9.days.ago)
+      Match.create(winner: me, loser: you, occurred_at: 8.days.ago)
+      Match.create(winner: me, loser: you, occurred_at: 7.days.ago)
+      Match.create(winner: me, loser: you, occurred_at: 6.days.ago)
+      Match.create(winner: me, loser: you, occurred_at: 5.days.ago)
+      Match.create(winner: me, loser: you, occurred_at: 4.days.ago)
+      Match.create(winner: me, loser: you, occurred_at: 3.days.ago)
+      Match.create(winner: me, loser: you, occurred_at: 2.days.ago)
+      Match.create(winner: me, loser: you, occurred_at: 1.days.ago)
       HulkSmash.eligible?(me).should be_true
       HulkSmash.eligible?(you).should be_false
     end
