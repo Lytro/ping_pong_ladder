@@ -18,5 +18,5 @@ describe "matches/index.html.haml" do
   it { should include("Cl") }
   it { should include("Minzy") }
   it { should include(occurred_at.strftime("%Y-%m-%d")) }
-  it { should include("https://twitter.com/intent/tweet") }
+  it { should include("https://twitter.com/share?") }
 end
