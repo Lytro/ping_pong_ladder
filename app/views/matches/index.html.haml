@@ -20,13 +20,14 @@
   %tr
     %td{colspan: 4}
       = will_paginate @matches
-  - @matches.each do |m|
+  - @matches.each do |match|
     %tr{class: cycle("even", "odd")}
-      %td.date= m.occurred_at.strftime("%Y-%m-%d")
-      %td= m.winner.display_name
-      %td= m.loser.display_name
+      %td.date= match.occurred_at.strftime("%Y-%m-%d")
+      %td= match.winner.display_name
+      %td= match.loser.display_name
       %td.action
-        = link_to '#', 'https://twitter.com/intent/tweet', class: "twitter-share-button", data: {lang: "en", count: "none", text: "#{m.winner.display_name} just beat #{m.loser.display_name} in a vigorous game of SC Pong", url: match_url(m)}
+        %a{href: twitter_share_url(match), :'data-lang' => 'en', target: 'popup',  :'data-width' => '580', :'data-height' => '275'}
+          Tweet it!
   %tr
     %td{colspan: 4}
       = will_paginate @matches
