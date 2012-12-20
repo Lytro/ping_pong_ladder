@@ -2,12 +2,17 @@ require 'spec_helper'
 
 describe "matches/index.html.haml" do
   let(:occured_at) { 2.days.ago }
-  let(:match) { Match.create(winner: Player.create(name: "cl"), loser: Player.create(name: "minzy"), occured_at: occured_at) }
+
   before do
-    assign :matches, [match]
+    FactoryGirl.create(:match, winner: FactoryGirl.create(:winner, name: "cl"),
+                       loser: FactoryGirl.create(:loser, name: "minzy"), occured_at: occured_at)
+
+    assign :matches, Match.page(1).order("occured_at DESC")
     assign :match, Match.new
+
     render
   end
+
   subject { rendered }
   it { should be }
   it { should include("Cl") }

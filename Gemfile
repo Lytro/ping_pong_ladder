@@ -16,6 +16,7 @@ gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootst
 gem 'will_paginate', '~> 3.0'
 
 group :test, :development do
+  gem 'factory_girl_rails'
   gem 'hashie'
   gem 'sqlite3'
   gem 'rspec-rails'

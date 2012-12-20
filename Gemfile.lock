@@ -49,6 +49,11 @@ GEM
     excon (0.16.10)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    factory_girl (4.1.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.1.0)
+      factory_girl (~> 4.1.0)
+      railties (>= 3.0.0)
     fog (1.7.0)
       builder
       excon (~> 0.14)
@@ -157,6 +162,7 @@ PLATFORMS
 DEPENDENCIES
   awesome_print (~> 1.0)
   carrierwave
+  factory_girl_rails
   fog
   font-awesome-rails
   haml-rails
