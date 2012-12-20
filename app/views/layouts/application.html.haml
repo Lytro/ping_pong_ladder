@@ -1,11 +1,10 @@
 !!! 5
 %html
   %head
-    %title SocialChorus #{location} — #{yield :title}
+    %title Lytro #{location} — #{yield :title}
     = stylesheet_link_tag    "application"
     = javascript_include_tag "application"
     = javascript_include_tag "http://use.typekit.com/rol0dzy.js"
-    = javascript_include_tag "snowstorm"
     = javascript_tag "try{Typekit.load();}catch(e){}"
     = favicon_link_tag
     = csrf_meta_tag
@@ -14,9 +13,7 @@
     %header
       .logo-area
         = link_to image_tag("logo.png"), root_url
-        = link_to image_tag("Panda-Aggressor.jpg"), root_url
     #page
-      = image_tag 'animatedTree.gif', id: 'tree'
       %nav
         = link_to_with_current "Rankings", root_path
         = link_to_with_current "Matches", matches_path
@@ -28,32 +25,3 @@
       = yield
       %footer
         = link_to "source code", "https://github.com/anujbiyani/ping_pong_ladder"
-
-    :javascript
-      window.twttr = (function (d,s,id) {
-      var t, js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return; js=d.createElement(s); js.id=id;
-      js.src="//platform.twitter.com/widgets.js";
-      fjs.parentNode.insertBefore(js, fjs);
-      return window.twttr || (t = { _e: [], ready: function(f){ t._e.push(f) } });
-      }(document, "script", "twitter-wjs"));
-      function getURLParameter(name, url) {
-        return decodeURIComponent(
-          (RegExp(name + '=' + '(.+?)(&|$)').exec(url)||[,null])[1]
-        );
-      }
-      twttr.ready(function (twttr) {
-        twttr.events.bind('tweet', function(event) {
-          var match_id = parseInt(getURLParameter("url", event.target.src).split('/').slice(-1)[0]);
-          $.ajax({url: '/api/tweet',
-                  data: { match_id: match_id },
-                  type: 'GET'
-                  }).done(function(data){
-                    if(data == "true"){
-                      window.location = '/matches?d=' + match_id;
-                    };
-                  });
-        });
-      });
-      snowStorm.autoStart = true;
-      snowStorm.flakesMaxActive = 1000;  // show more snow on screen at once

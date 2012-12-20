@@ -1,7 +1,5 @@
 body {
   font-family: Helvetica, Arial, sans-serif;
-  //background: transparent url('http://www.socialchorus.com/wp-content/themes/socialchorus/img/bgNav.png') repeat top left;
-  background: transparent url('snowflakeTile.gif') repeat top left;
 }
 
 body > * {
@@ -22,10 +20,10 @@ h1, h3 {
 
 a {
   text-decoration: none;
-  color: #6e1674;
+  color: black;
   &.current {
     color: #eee;
-    background-color: #6e1674;
+    background-color: black;
     border-radius: 4px;
     padding: 5px;
   }
@@ -40,7 +38,6 @@ a {
 }
 
 header {
-  background: white url("navStripe.png") repeat-x bottom left;
   padding: 15px 0 20px 0;
   margin-bottom: 40px;
 }
@@ -266,38 +263,11 @@ td.action, th.action {
 
 .stat {
   position: relative;
-  background-color: #888;
+  background-color: white;
   h1 {
     color: #fff;
     position: absolute;
     top: 10px;
     left: 10px;
   }
-}
-
-#tree {
-  height: 150px;
-  width: 150px;
-  position: absolute;
-  top: -111px;
-  right: -40px;
-}
-
-.icon-bobby {
-  background: transparent url('bobby.png') no-repeat top left;
-  height: 20px;
-  width: 20px;
-}
-
-td .icon-bobby {
-  display: block;
-  margin: 0 auto;
-}
-
-.badge-wrap .icon-bobby {
-  background: transparent url('bobby-large.png') no-repeat top left;
-  display: block;
-  margin: 0 auto;
-  height: 50px;
-  width: 50px;
 }

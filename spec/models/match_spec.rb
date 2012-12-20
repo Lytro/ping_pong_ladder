@@ -195,6 +195,8 @@ describe Match do
     let!(:p1) { Player.create(name: 'p1') }
 
     it "should do something if special is set on achievement" do
+      pending "create a special achievement"
+
       Match.create(winner: p1, loser: bobby, occurred_at: 1.day.ago)
       p1.reload.achievements.map(&:class).should include(SmiteBobby)
       Match.create(winner: bobby, loser: p1)

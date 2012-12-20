@@ -9,7 +9,7 @@ class Achievement < ActiveRecord::Base
 
   before_create :set_defaults
 
-  SPECIALS = [SmiteBobby]
+  SPECIALS = []
 
   class << self
     def title

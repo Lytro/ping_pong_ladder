@@ -46,6 +46,8 @@ describe MatchObserver do
 
   describe "#check_specials" do
     it "should check and perform specials of both players" do
+      pending "create a special achievement"
+
       bobby = Player.create(name: "bobby isaacson")
       Match.create(winner: me, loser: bobby, occurred_at: 1.day.ago)
       me.reload.achievements.map(&:class).should include(SmiteBobby)
