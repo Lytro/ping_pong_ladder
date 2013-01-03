@@ -1,0 +1,29 @@
+- content_for :title, "Rules"
+- content_for :stylesheets do
+  = stylesheet_link_tag "rules/index"
+
+%h2 Rules
+%p Note: this is not yet a complete set, but should cover most of the important rules.
+
+%h3 For arranging games
+%ul
+  %li Make it clear to your opponent that this is a ranked match. For example, say "Would you like to play a ranked match, or just for fun?"
+  %li Once challenged, you must accept. The match must be played within the week, barring sickness or vacation. Otherwise, you must forfeit!
+
+%h3 During the game
+%ul
+  %li Trash-talking is required.
+  %li Best of 3 games, first to 11 points (must win by 2 points).
+  %li When serving, do not cover the ball with your hand and toss the ball at least 6 inches in the air.
+  %li
+    Change the server every two points, except in deuce where you alternate every point.
+    (Deuce is entered as soon as the game is tied 10-10.)
+  %li If you strike the table in a jarring manner (i.e. your opponent is distracted or the table moves), then redo the point. Otherwise, play on!
+
+%h3 After the game
+%ul
+  %li The winner must either 1) take a punch from the loser, or 2) do a 30-second keg-stand.
+  %li
+    Log the match
+    = link_to "here.", matches_path
+  %li Shake hands. To get the "Manly" achievement, spit in your hands before shaking. (The software will automagically detect the spit when you enter your match.)

@@ -1,7 +1,17 @@
 - content_for :title, "Updates"
+- content_for :stylesheets do
+  = stylesheet_link_tag "updates/index"
+
 %h1 What's new?
 
 .post
+  %h4 Added an initial set of rules!
+  %i 1.2.2012
+  %ul
+    %li
+      Added some official rules
+      = link_to "here.", rules_path
+      More to come!
   %h4 Launched Lytro Ping Pong
   %i 12.19.2012
   %ul

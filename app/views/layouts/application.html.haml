@@ -3,6 +3,8 @@
   %head
     %title= "#{yield :title} - Lytro Ping Pong"
     = stylesheet_link_tag    "application"
+    = yield :stylesheets
+
     = javascript_include_tag "global-bundle"
     = javascript_include_tag "http://use.typekit.com/rol0dzy.js"
     = javascript_tag "try{Typekit.load();}catch(e){}"
@@ -20,6 +22,7 @@
         = link_to_with_current "Achievements", achievements_path
         = link_to_with_current "Stats", stats_path
         = link_to_with_current "What's New?", updates_path
+        = link_to_with_current "Rules", rules_path
 
       = render 'shared/flash_messages'
       = yield
