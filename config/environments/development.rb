@@ -1,6 +1,4 @@
 Pong::Application.configure do
-  ENV['AWS_KEY'] = "AKIAJ6SUBC5HBDULHBUA"
-  ENV['AWS_SECRET'] = "JFOqjaAqIFuAhJ80v6l0lAlPedqjt9uGAP4sUVt4"
   # Settings specified here will take precedence over those in config/application.rb
 
   # In the development environment your application's code is reloaded on
