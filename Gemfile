@@ -1,5 +1,7 @@
 source 'http://rubygems.org'
 
+ruby '1.9.3'
+
 gem 'carrierwave'
 gem 'fog'
 gem 'font-awesome-rails'
@@ -15,6 +17,7 @@ gem 'therubyracer'
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 gem 'will_paginate'
 gem 'thin'
+gem 'libv8'
 
 group :test, :development do
   gem 'factory_girl_rails'
