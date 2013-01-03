@@ -18,6 +18,8 @@ gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootst
 gem 'will_paginate'
 gem 'thin'
 gem 'libv8'
+gem 'hipchat'
+gem 'app'
 
 group :test, :development do
   gem 'factory_girl_rails'

@@ -17,4 +17,19 @@ describe ApisController do
       expect { get :tweet, match_id: match.id }.to change(BraggingRights, :count).by(0)
     end
   end
+
+  describe "#announce_match" do
+    include FakeHipChat
+
+    it "posts to the appropriate channel in HipChat" do
+      player_one = "Dudeman"
+      player_two = "Dudewoman"
+
+      HipChat::Client.stub(:new).and_return(FakeHipChat::Client.new)
+      FakeHipChat::Room.any_instance.should_receive(:send).with('Pong.Lytro.com',
+                                      I18n.t('hipchat.announce_match', player_one: player_one, player_two: player_two))
+
+      post :announce_match, player_one: player_one, player_two: player_two
+    end
+  end
 end

@@ -3,3 +3,5 @@
 
 en:
   hello: "Hello world"
+  hipchat:
+    announce_match: "%{player_one} and %{player_two} are about to face off on the ping pong table."

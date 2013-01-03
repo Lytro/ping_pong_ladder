@@ -20,9 +20,10 @@ Pong::Application.routes.draw do
 
   resources :rules, only: [:index]
 
-  resource :api do
+  resource :api, only: [] do
     member do
       get 'tweet'
+      post 'announce_match'
     end
   end
 
