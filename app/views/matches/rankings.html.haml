@@ -1,4 +1,7 @@
 - content_for :title, "Rankings"
+- content_for :stylesheets do
+  = stylesheet_link_tag "matches/rankings"
+
 .rankings
   %ol
     - @rankings.each do |player|

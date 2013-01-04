@@ -2,7 +2,8 @@
 %html
   %head
     %title= "#{yield :title} - Lytro Ping Pong"
-    = stylesheet_link_tag    "application"
+    = stylesheet_link_tag "reset", "bootstrap_and_overrides", "jquery.autocomplete", 'font-awesome'
+    = stylesheet_link_tag "application"
     = yield :stylesheets
 
     = javascript_include_tag "global-bundle"

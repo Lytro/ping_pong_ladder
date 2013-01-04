@@ -1,6 +1,273 @@
-//= require_self
-//= require reset
-//= require bootstrap_and_overrides
-//= require jquery.autocomplete
-//= require 'font-awesome'
-//= require pong
+body {
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+body > * {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.clearfix {
+  clear: both;
+}
+
+h1, h3 {
+  font-size: 36px;
+  margin: 10px 0;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+  &.current {
+    color: #eee;
+    background-color: black;
+    border-radius: 4px;
+    padding: 5px;
+  }
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.logo-area {
+  width: 1000px;
+  margin: 0 auto;
+}
+
+header {
+  padding: 15px 0 20px 0;
+  margin-bottom: 40px;
+}
+
+nav {
+  height: 30px;
+  a {
+    margin-right: 20px;
+  }
+}
+
+footer {
+  font-size: 12px;
+  a {
+    float: right;
+  }
+}
+
+ol {
+  font-size: 48px;
+  margin: 10px 10px 20px 100px;
+  li { list-style-position: outside; }
+}
+
+li {
+  padding: 5px 2.5%;
+  width: 95%;
+  line-height: 48px;
+}
+
+li, td {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+table {
+  table-layout: fixed;
+  margin: 10px 0px;
+  width: 100%;
+}
+
+tr {
+  height: 20px;
+}
+
+th, td {
+  padding: 2px 5px;
+  vertical-align: middle;
+}
+
+th {
+  background-color: #333;
+  color: white;
+  overflow: hidden;
+}
+
+td {
+  text-align: center;
+  width: 200px;
+}
+
+form {
+  margin: 10px 0;
+}
+
+input[type='text'] {
+  font-size: 24px;
+  display: block;
+  width: 100%;
+  border-radius: 3px;
+}
+
+td.date, th.date {
+  width: 100px;
+  text-align: center;
+}
+
+td.action, th.action {
+  font-size: 12px;
+  width: 200px;
+  text-align: center;
+}
+
+#page {
+  margin: 0 auto 50px auto;
+  border: 1px solid #999;
+  border-radius: 4px;
+  width: 1000px;
+  padding: 25px;
+  background-color: #dedede;
+  position: relative;
+}
+
+.even {
+  background-color: #f0f0f0;
+}
+
+.odd {
+  background-color: #e7e7e7;
+}
+
+.tabs {
+  margin-top: 20px;
+}
+
+.tab-bar {
+  list-style-type: none;
+  margin-bottom: 20px;
+  li { display: inline; }
+}
+
+.flash {
+  margin-bottom: 10px;
+  .alert {
+    color: white;
+    border: 1px solid #8b0000;
+    background-color: #db7093;
+    padding: 10px;
+    border-radius: 4px;
+  }
+  .notice {
+    color: green;
+    border: 1px solid #2e8b57;
+    background-color: #98fb98;
+    padding: 10px;
+    border-radius: 4px;
+  }
+}
+.badges {
+  font-size: 20px;
+  height: 40px;
+  width: 230px;
+  display: inline-block;
+  margin-bottom: -5px;
+  h2 { margin-bottom: 10px; }
+  a {
+    display: block;
+    float: left;
+    height: 20px;
+    line-height: 20px;
+  }
+  p {
+    white-space: normal;
+    line-height: 13px;
+    font-size: 13px;
+  }
+}
+
+.rankings {
+  .badges {
+    float: right;
+    a { float: right; }
+  }
+}
+.player {
+  .avatar, .player_stats, .player_stat { float: left; }
+  .avatar {
+    width: 350px;
+    img { border: 1px solid #708090; }
+  }
+  .badges {
+    width: 100%;
+    display: block;
+    a { padding-right: 10px; }
+  }
+  .player_stats {
+    width: 560px;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 4px;
+    border: 2px solid #000;
+    padding: 10px;
+  }
+  .player_stat { width: 280px; }
+  .odds {
+    text-align: left;
+    h3 {
+      float: right;
+      width: 200px;
+      text-align: center;
+      margin-top: -6px;
+      color: #6E1674;
+    }
+  }
+}
+.player > h1 { color: #ed174f; }
+
+.achievements {
+  td, th {
+    text-align: left;
+    &.icon  {
+      width: 100px;
+      text-align: center;
+    }
+  }
+}
+
+.post {
+  li { line-height: inherit; }
+}
+
+.badge-large {
+  font-size: 40px;
+  line-height: 40px;
+  color: #6e1674;
+}
+
+.badge-wrap {
+  margin-bottom: 20px;
+  .badge-large, .badge-wrap-right {
+    display: inline-block;
+  }
+}
+
+.modal {
+  width: 700px;
+  margin-left: -350px;
+  th {
+    text-align: center;
+  }
+}
+.change_photo { display: none; }
+
+.stat {
+  position: relative;
+  background-color: white;
+  h1 {
+    color: #fff;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
+}
