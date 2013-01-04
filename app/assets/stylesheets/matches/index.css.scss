@@ -1,3 +1,18 @@
 section {
   margin-bottom: 30px;
 }
+
+.hipchat {
+  display: inline;
+
+  label {
+    display: inline;
+    vertical-align: middle;
+    padding-left: 10px;
+    padding-right: 2px;
+  }
+
+  input {
+    margin-top: 0;
+  }
+}

@@ -12,4 +12,9 @@ class ApplicationController < ActionController::Base
       end
     end
   end
+
+  def post_to_hipchat(message)
+    client = HipChat::Client.new(ENV['HIPCHAT_TOKEN'])
+    client[App.hipchat[:room]].send(App.hipchat[:username], message)
+  end
 end

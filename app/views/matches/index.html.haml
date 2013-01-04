@@ -12,7 +12,8 @@
     = text_field_tag :player_two, "", autocomplete: "off"
     = submit_tag "Announce it via HipChat"
 
-%section
+%section#declare_winner
+  %h2 Declare a winner
   = form_for(@match) do |f|
     = label_tag :winner_name
     = text_field_tag :winner_name, "", autocomplete: "off"
@@ -21,6 +22,9 @@
     = f.label :occurred_at
     = f.text_field :occurred_at, value: Time.now.strftime("%Y-%m-%d %H:%M:%S")
     = submit_tag "Add match", disable_with: "Working..."
+    .hipchat
+      = label_tag "hipchat", "Brag on HipChat!"
+      = check_box_tag "hipchat"
 
 %h2 Match history
 

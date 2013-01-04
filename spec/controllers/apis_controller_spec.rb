@@ -19,19 +19,13 @@ describe ApisController do
   end
 
   describe "#announce_match" do
-    include FakeHipChat
-
     let(:player_one) { "Dudeman" }
     let(:player_two) { "Dudewoman" }
     let(:announce_match) { post :announce_match, player_one: player_one, player_two: player_two }
 
-    before do
-      HipChat::Client.stub(:new).and_return(FakeHipChat::Client.new)
-    end
-
     it "posts to the appropriate channel in HipChat" do
       FakeHipChat::Room.any_instance.should_receive(:send).with('Pong.Lytro.com',
-                                      I18n.t('hipchat.announce.match', player_one: player_one, player_two: player_two))
+                                      I18n.t('hipchat.match.start', player_one: player_one, player_two: player_two))
 
       announce_match
     end
@@ -39,7 +33,7 @@ describe ApisController do
     it "redirects to the home page and sets the flash notice" do
       announce_match
       response.should redirect_to(root_path)
-      flash[:notice].should eq I18n.t('hipchat.announce.success')
+      flash[:notice].should eq I18n.t('hipchat.announce_success')
     end
   end
 end

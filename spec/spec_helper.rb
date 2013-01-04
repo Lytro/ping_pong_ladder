@@ -26,4 +26,8 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
 
   config.color_enabled = true
+
+  config.before(:each) do
+    HipChat::Client.stub(:new).and_return(FakeHipChat::Client.new)
+  end
 end

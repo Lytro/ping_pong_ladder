@@ -13,9 +13,7 @@ class ApisController < ApplicationController
   end
 
   def announce_match
-    client = HipChat::Client.new(ENV['HIPCHAT_TOKEN'])
-    client[App.hipchat[:room]].send(App.hipchat[:username], t('hipchat.announce.match', player_one: params[:player_one], player_two: params[:player_two]))
-
-    redirect_to root_path, notice: t('hipchat.announce.success')
+    post_to_hipchat t('hipchat.match.start', player_one: params[:player_one], player_two: params[:player_two])
+    redirect_to root_path, notice: t('hipchat.announce_success')
   end
 end

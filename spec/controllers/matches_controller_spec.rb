@@ -36,8 +36,9 @@ describe MatchesController do
       assigns(:loser).should == match.loser
     end
   end
+
   describe "POST #create" do
-    let(:match_params) { {winner_name: "taeyang", loser_name: "se7en" } }
+    let(:match_params) { {winner_name: "Taeyang", loser_name: "Se7en" } }
 
     describe "redirection" do
       before { post :create, match_params }
@@ -62,6 +63,18 @@ describe MatchesController do
       expect { post :create, {winner_name: "foo", loser_name: ""} }.to_not change(Match, :count)
       expect { post :create, {winner_name: "", loser_name: ""} }.to_not change(Match, :count)
 
+    end
+
+    it "brag on hipchat if selected" do
+      FakeHipChat::Room.any_instance.should_receive(:send).with('Pong.Lytro.com',
+          I18n.t('hipchat.match.finish', winner: match_params[:winner_name], loser: match_params[:loser_name]))
+
+      post :create, match_params.merge({hipchat: true})
+    end
+
+    it "does not brag on hipchat by default" do
+      FakeHipChat::Room.any_instance.should_not_receive(:send)
+      post :create, match_params
     end
 
     context "when the winner name includes extra whitespace" do

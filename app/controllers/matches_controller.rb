@@ -11,7 +11,9 @@ class MatchesController < ApplicationController
 
     match = Match.new winner: winner, loser: loser
 
-    unless [winner, loser].all?(&:valid?) && match.save
+    if [winner, loser].all?(&:valid?) && match.save
+      post_to_hipchat t('hipchat.match.finish', winner: winner.display_name, loser: loser.display_name) if params[:hipchat]
+    else
       if match.errors.present?
         flash.alert = match.errors.full_messages.join('\n')
       else

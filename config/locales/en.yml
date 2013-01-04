@@ -4,6 +4,7 @@
 en:
   hello: "Hello world"
   hipchat:
-    announce:
-      match: "%{player_one} and %{player_two} are about to face off on the ping pong table."
-      success: "Your match was successfully announced. I hope."
+    announce_success: "Your match was successfully announced. I hope."
+    match:
+      start: "%{player_one} and %{player_two} are about to face off on the ping pong table."
+      finish: "Huzzah! %{winner} has beaten %{loser}."
