@@ -1,13 +1,26 @@
 - content_for :title, "Matches"
 
-= form_for(@match) do |f|
-  = label_tag :winner_name
-  = text_field_tag :winner_name, "", autocomplete: "off"
-  = label_tag :loser_name
-  = text_field_tag :loser_name, "", autocomplete: "off"
-  = f.label :occurred_at
-  = f.text_field :occurred_at, value: Time.now.strftime("%Y-%m-%d %H:%M:%S")
-  = submit_tag "Add match", disable_with: "Working..."
+- content_for :stylesheets do
+  = stylesheet_link_tag "matches/index"
+
+%section#announce_match
+  %h2 Announce a match
+  = form_for @match, url: announce_match_api_path do |f|
+    = label_tag :player_one
+    = text_field_tag :player_one, "", autocomplete: "off"
+    = label_tag :player_two
+    = text_field_tag :player_two, "", autocomplete: "off"
+    = submit_tag "Announce it via HipChat"
+
+%section
+  = form_for(@match) do |f|
+    = label_tag :winner_name
+    = text_field_tag :winner_name, "", autocomplete: "off"
+    = label_tag :loser_name
+    = text_field_tag :loser_name, "", autocomplete: "off"
+    = f.label :occurred_at
+    = f.text_field :occurred_at, value: Time.now.strftime("%Y-%m-%d %H:%M:%S")
+    = submit_tag "Add match", disable_with: "Working..."
 
 %h2 Match history
 
